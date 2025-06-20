@@ -10,10 +10,12 @@ import {
   List,
   ListItem,
   ListItemText,
+  ListItemButton,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { usePathname } from "next/navigation";
 import { getLatestData } from "../app/lib/routes";
+import { X } from "lucide-react";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -197,20 +199,27 @@ export default function Header() {
 
         {/* Mobile Drawer */}
         <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
-          <List>
+          <List sx={{padding: 4, fontSize: '14px'}}>
+            <div className="lg:hidden flex justify-end p-2 pr-4">
+              <IconButton edge="end" onClick={handleDrawerToggle}>
+                <X />
+              </IconButton>
+            </div>
+
             {navLinks.map((link) => (
-              <ListItem
-                button
-                key={link.title}
-                component={Link}
-                href={link.path}
-                className={`transition-colors duration-200 hover:text-green-600 ${
-                  isActiveLink(link.path)
-                    ? "text-green-600 font-bold"
-                    : "text-gray-900"
-                }`}
-              >
-                <ListItemText primary={link.title} />
+              <ListItem disablePadding key={link.title}>
+                <Link href={link.path} passHref legacyBehavior>
+                  <ListItemButton
+                    component="a"
+                    className={`text-4xl transition-colors duration-200 hover:text-green-600 ${
+                      isActiveLink(link.path)
+                        ? "text-green-600 font-bold"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    <ListItemText primary={link.title} />
+                  </ListItemButton>
+                </Link>
               </ListItem>
             ))}
           </List>

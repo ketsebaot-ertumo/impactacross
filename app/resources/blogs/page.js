@@ -146,29 +146,30 @@ export default function Blogs() {
                                     >
                                         Next
                                     </button>
-                                 </div>
+                                </div>
 
-                            <div className="flex items-center gap-2">
-                                <label htmlFor="pageSize" className="text-sm text-gray-700 font-medium">
-                                    Posts per page:
-                                </label>
-                                <select
-                                    id="pageSize"
-                                    value={pageSize}
-                                    onChange={(e) => {
-                                        setPageSize(Number(e.target.value));
-                                        setCurrentPage(1);
-                                    }}
-                                        className="border border-gray-300 rounded px-3 py-1 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
-                                >
-                                    {[2, 5, 10, 25].map((size) => (
-                                    <option key={size} value={size}>
-                                            {size} posts
-                                    </option>
-                                    ))}
-                                </select>
+                                <div className="flex items-center gap-2">
+                                    <label htmlFor="pageSize" className="text-sm text-gray-700 font-medium">
+                                        Posts per page:
+                                    </label>
+                                    <select
+                                        id="pageSize"
+                                        value={pageSize}
+                                        onChange={(e) => {
+                                            setPageSize(Number(e.target.value));
+                                            setCurrentPage(1);
+                                        }}
+                                            className="border border-gray-300 rounded px-3 py-1 text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
+                                    >
+                                        {[2, 5, 10, 25].map((size) => (
+                                        <option key={size} value={size}>
+                                                {size} posts
+                                        </option>
+                                        ))}
+                                    </select>
+                                </div>
                             </div>
-                        </div>
+                            
                     </div>
                 )
             )}

@@ -115,7 +115,7 @@ export default function Header() {
     if (linkPath === "/#services") {
       return (
         (pathname === "/" && hash === "#services") ||
-        pathname.startsWith("/services")
+        pathname.startsWith("/services/")
       );
     }
   

@@ -243,8 +243,9 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
   const [description, setDescription] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(100);
+  const [pageSize, setPageSize] = useState(18);
   const [total, setTotal] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -253,7 +254,8 @@ export default function Gallery() {
         if (res?.data) {
           setData(res.data);
           setDescription(res.data?.[0]?.section?.description || '');
-          setTotal(res.pagination?.total || 0);
+          setTotal(res.pagination?.total);
+          setTotalPages(res.pagination?.totalPages);
         }
       } catch {
         setData([]);
@@ -263,6 +265,12 @@ export default function Gallery() {
     };
     fetchData();
   }, [currentPage, pageSize, total]);
+
+  const handlePagination = (page) => {
+    if (page >= 1 && page <= totalPages) {
+        setCurrentPage(page);
+    }
+  };
 
   const grouped = data?.reduce((acc, item) => {
     const month = dayjs(item.createdAt).format('MMMM YYYY');
@@ -275,50 +283,83 @@ export default function Gallery() {
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-white to-gray-100 px-4 pt-12">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">
-            {description || 'A beautifully organized archive of captured moments by month.'}
-          </p>
-        </div>
-
-        <div className='flex flex-wrap gap-8 py-6'>
-            {Object.entries(grouped || {}).map(([month, items], index) => (
-            <div key={month} className="mb-24">
-                <h3 className="text-2xl font-semibold text-gray-700 mb-6">{month}</h3>
-
-                <div className="relative rounded-xl flex flex-wrap sm:flex-nowrap gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
-                {items.map((img, i) => (
-                    <motion.div
-                    key={i}
-                    className="relative w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.05 }}
-                    onClick={() => setSelected(img)}
-                    style={{
-                        marginLeft: i === 0 ? 0 : -200,
-                        marginTop: (i % 5) * 12,
-                    }}
-                    >
-                    <Image
-                        src={img.image_url}
-                        alt={img.title || `Image ${i}`}
-                        fill
-                        className="object-cover rounded-xl"
-                    />
-                    <div className="absolute bottom-0 w-full text-sm bg-gradient-to-t from-black/60 to-transparent text-white px-3 py-2">
-                        {img.title || 'Untitled'}
-                    </div>
-                    </motion.div>
-                ))}
-                </div>
+        <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">
+                {description || 'A beautifully organized archive of captured moments by month.'}
+            </p>
             </div>
-            ))}
-        </div>
 
-      </div>
+            <div className='flex flex-wrap gap-8 pt-6'>
+                {Object.entries(grouped || {}).map(([month, items], index) => (
+                <div key={month} className="mb-24">
+                    <h3 className="text-2xl font-semibold text-gray-700 mb-6">{month}</h3>
+
+                    <div className="relative rounded-xl flex flex-wrap sm:flex-nowrap gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
+                    {items.map((img, i) => (
+                        <motion.div
+                        key={i}
+                        className="relative w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
+                        initial={{ opacity: 0, x: 30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: i * 0.05 }}
+                        onClick={() => setSelected(img)}
+                        style={{
+                            marginLeft: i === 0 ? 0 : -200,
+                            marginTop: (i % 5) * 12,
+                        }}
+                        >
+                        <Image
+                            src={img.image_url}
+                            alt={img.title || `Image ${i}`}
+                            fill
+                            className="object-cover rounded-xl"
+                        />
+                        <div className="absolute bottom-0 w-full text-sm bg-gradient-to-t from-black/60 to-transparent text-white px-3 py-2">
+                            {img.title || 'Untitled'}
+                        </div>
+                        </motion.div>
+                    ))}
+                    </div>
+                </div>
+                ))}
+            </div>
+
+            {/* Pagination & Controls */}
+            {data && data?.length && (
+                <div className="flex items-center justify-center space-x-2 max-w-6xl mx-auto">
+                    <button
+                        onClick={() => handlePagination(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className={`px-4 py-2 rounded-md font-medium transition ${
+                        currentPage === 1
+                            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                            : "bg-green-600 text-white hover:bg-green-700"
+                        }`}
+                    >
+                        Previous
+                    </button>
+
+                    <span className="text-gray-700 font-medium">
+                        Page {currentPage} of {totalPages}
+                    </span>
+
+                    <button
+                        onClick={() => handlePagination(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className={`px-4 py-2 rounded-md font-medium transition ${
+                        currentPage === totalPages
+                            ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                            : "bg-green-600 text-white hover:bg-green-700"
+                        }`}
+                    >
+                        Next
+                    </button>
+                </div>
+            )}
+
+        </div>
 
       {/* Lightbox Modal */}
       <AnimatePresence>

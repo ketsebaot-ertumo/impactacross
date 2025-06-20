@@ -58,7 +58,7 @@ export default function OurExpertise() {
           transition={{ delay: 0.3, duration: 0.5 }}
           viewport={{ once: false }}
         >
-          <p>Our Purpose</p>
+          <p>{data?.title || "Our Sector Expertise"}</p>
         </motion.h2>
 
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
@@ -76,7 +76,7 @@ export default function OurExpertise() {
               expanded ? '' : 'line-clamp-4'
             }`}
           >
-            {data?.description || "At ImpactAcross, we bring deep, multidisciplinary expertise to address complex development challenges across a range of critical sectors."}
+            {data?.description || "At ImpactAcross, we bring deep, multidisciplinary expertise to address complex development challenges across a range of critical sectors"}
           </div>
 
           {needsExpand && (

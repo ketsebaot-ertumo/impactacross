@@ -26,7 +26,7 @@ export const viewport = {
 export const metadata = {
   metadataBase: new URL("https://impactacross.com"),
   title: {
-    default: "ImpactAcross Development Research and Consultancy PLC",
+    default: "ImpactAcross Consulting",
     template: "%s | ImpactAcross"
   },
   description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
@@ -37,16 +37,16 @@ export const metadata = {
     apple: '/logo1.jpeg'
   },
   openGraph: {
-    title: "ImpactAcross Development Research and Consultancy PLC",
+    title: "ImpactAcross Consulting",
     description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
     url: "https://impactacross.com",
-    siteName: "ImpactAcross Development Research and Consultancy PLC",
+    siteName: "ImpactAcross Consulting",
     images: [
       {
         url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png",
         width: 1200,
         height: 630,
-        alt: "ImpactAcross Development Research and Consultancy PLC",
+        alt: "ImpactAcross Consulting",
         type: "image/png"
       },
     ],
@@ -55,14 +55,14 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ImpactAcross Development Research and Consultancy PLC",
+    title: "ImpactAcross Consulting",
     description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
     images: [
       {
         url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png",
         width: 1200,
         height: 630,
-        alt: "ImpactAcross Development Research and Consultancy PLC",
+        alt: "ImpactAcross Consulting",
         type: "image/png"
       },
     ],

@@ -102,8 +102,8 @@ export default function Header() {
     { title: "Home", path: "/" },
     { title: "About Us", path: "/#about" },
     { title: "Services", path: "/#services" },
-    { title: "Gallery", path: "/gallery" },
     { title: "Resources", path: "/resources" },
+    { title: "Gallery", path: "/gallery" },
     { title: "Contact Us", path: "/contact" },
   ];
 

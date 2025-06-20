@@ -236,10 +236,68 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getAllData } from '../app/lib/routes';
 import dayjs from 'dayjs';
+import Loader from './Loader';
+
+const defautData = [
+    {
+        title: 'Project Planning Workshop',
+        description: 'Images from our workshop on effective project planning.',
+        image_url: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750154332/ImpactAcross/images/xn7sv2oliyhvwlzdtnfd.jpg',
+        video_url: 'https://example.com/videos/project-planning.mp4',
+        category: 'Workshops',
+        createdAt: new Date('2025-06-15T10:00:00Z'),
+        updatedAt: new Date('2025-06-15T10:00:00Z')
+    },
+    {
+        title: 'Community Engagement Event',
+        description: 'Snapshots from our community engagement event.',
+        image_url: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750155484/ImpactAcross/images/wpcammpxjonbhjdd2cay.jpg',
+        video_url: 'https://example.com/videos/community-engagement.mp4',
+        category: 'Events',
+        createdAt: new Date('2025-06-15T10:00:00Z'),
+        updatedAt: new Date('2025-06-15T10:00:00Z')
+    },
+    {
+        title: 'Consultancy Meeting',
+        description: 'Photos from a consultancy meeting with stakeholders.',
+        image_url: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750155484/ImpactAcross/images/wpcammpxjonbhjdd2cay.jpg',
+        video_url: 'https://example.com/videos/consultancy-meeting.mp4',
+        category: 'Meetings',
+        createdAt: new Date('2025-06-15T10:00:00Z'),
+        updatedAt: new Date('2025-06-15T10:00:00Z')
+    },
+    {
+        title: 'Annual Review Conference',
+        description: 'Highlights from our annual review conference.',
+        image_url: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097294/ImpactAcross/images/photo_5944760772829759996_x_omvwji.jpg',
+        video_url: 'https://example.com/videos/annual-review.mp4',
+        category: 'Conferences',
+        createdAt: new Date('2025-05-05T11:00:00Z'),
+        updatedAt: new Date('2025-05-05T10:00:00Z'),
+    },
+    {
+        title: 'Training Session on Leadership',
+        description: 'Photos from our leadership training session.',
+        image_url: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097294/ImpactAcross/images/photo_5944760772829759996_x_omvwji.jpg',
+        video_url: 'https://example.com/videos/leadership-training.mp4',
+        category: 'Training',
+        createdAt: new Date('2025-05-12T13:45:00Z'),
+        updatedAt: new Date('2025-05-12T10:00:00Z'),
+    },
+    {
+        title: 'Volunteer Appreciation Day',
+        description: 'Moments from our volunteer appreciation day.',
+        image_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097294/ImpactAcross/images/photo_5944760772829759996_x_omvwji.jpg",
+        video_url: 'https://example.com/videos/volunteer-appreciation.mp4',
+        category: 'Celebrations',
+        createdAt: new Date('2025-04-18T16:20:00Z'),
+        updatedAt: new Date('2025-04-18T10:00:00Z'),
+    },
+]
 
 export default function Gallery() {
   const [selected, setSelected] = useState(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(defautData);
   const [loading, setLoading] = useState(true);
   const [description, setDescription] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
@@ -272,6 +330,15 @@ export default function Gallery() {
     }
   };
 
+  if(loading) 
+    return (
+        <div className="h-[80vh] flex justify-center">
+            <Loader className="" />
+        </div>
+    )
+
+  if(!data) return <p className="h-16 text-emerald-500 mx-auto">No data Found!</p>
+
   const grouped = data?.reduce((acc, item) => {
     const month = dayjs(item.createdAt).format('MMMM YYYY');
     acc[month] = acc[month] || [];
@@ -279,28 +346,26 @@ export default function Gallery() {
     return acc;
   }, {});
 
-  console.log("\n group data:", grouped)
-
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white to-gray-100 px-4 pt-12">
+    <section className="min-h-screen bg-gradient-to-br from-white to-gray-100 px-4 pt-12 pb-8">
         <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">
-                {description || 'A beautifully organized archive of captured moments by month.'}
-            </p>
+                <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">
+                    {description || 'A beautifully organized archive of captured moments by month.'}
+                </p>
             </div>
 
-            <div className='flex flex-wrap gap-8 pt-6'>
+            <div className='flex flex-wrap sm:gap-8 pt-6'>
                 {Object.entries(grouped || {}).map(([month, items], index) => (
-                <div key={month} className="mb-24">
+                <div key={month} className="mb-12">
                     <h3 className="text-2xl font-semibold text-gray-700 mb-6">{month}</h3>
 
-                    <div className="relative rounded-xl flex flex-wrap sm:flex-nowrap gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
+                    <div className="relative rounded-xl flex  gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
                     {items.map((img, i) => (
                         <motion.div
                         key={i}
-                        className="relative w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
+                        className="relative w-[250px] sm:w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: i * 0.05 }}
@@ -328,7 +393,7 @@ export default function Gallery() {
 
             {/* Pagination & Controls */}
             {data && data?.length && (
-                <div className="flex items-center justify-center space-x-2 max-w-6xl mx-auto">
+                <div className="flex items-center justify-center space-x-2 mx-auto">
                     <button
                         onClick={() => handlePagination(currentPage - 1)}
                         disabled={currentPage === 1}

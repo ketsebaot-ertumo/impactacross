@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
 import { getAllData } from "../../lib/routes";
-import { useParams } from "next/navigation";
 
 
 export default function Publications() {

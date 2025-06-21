@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import ResourceCard from "../../components/ResourceCard";
-import { getLatestBlogPost, getLatestMultimedia, getLatestPublication, getLatestTraining } from "../lib/routes";
+import { getLatestData } from "../lib/routes";
 import Loader from "../../components/Loader";
 import toast from "react-hot-toast";
 
@@ -17,13 +17,13 @@ export default function ResourceGrid() {
       try{
         // setLoading(true);
         const [blog, publication, multimedia, training] = await Promise.all([
-          getLatestBlogPost(),
-          getLatestPublication(),
-          getLatestMultimedia(),
-          getLatestTraining()
+          await getLatestData("blogs"),
+          getLatestData("publications"),
+          getLatestData("multimedias"),
+          getLatestData("trainings")
         ]);
     
-        const fetched = [blog, publication, multimedia, training].filter(Boolean);
+        const fetched = [blog?.data, publication?.data, multimedia?.data, training?.data].filter(Boolean);
         if (fetched.length === 0) toast.error("No resources found");
     
         setResources((prev) => {

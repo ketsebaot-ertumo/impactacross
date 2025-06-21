@@ -46,12 +46,12 @@ export default function Footer() {
           {
               id: "fcwg3upe6c6u75uwiiuo8",
               owner_id: "fcciuxdzhlemjomgmlirl",
-              address: "Bole woreda 04, Roadmap Building, Addis Ababa, Ethiopia",
+              address: `Bole Sub City, Woreda 04\nRoadmap Building (Near Lem Hotel)\nAddis Ababa, Ethiopia.`,
           },
           {
               id: "u9bcc6dcygjbj6d8ku3qf",
               owner_id: "fcciuxdzhlemjomgmlirl",
-              address: "9 Vintage 47, Flacon Street, D'Urbanvalle, Cape Town 7550, South Africa",
+              address: `9 Vintage\n47 Flacon Street\nD’Urbanvalle\nCape Town 7550\nSouth Africa`,
           }
       ]
   }
@@ -102,12 +102,15 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h3 className="text-white font-semibold mb-4 text-lg">Contact Us</h3>
-            <ul className="space-y-2 max-w-60">
+            <ul className="space-y-2">
+
               {/* Locations */}
               {data?.locations.map((loc, index) => (
-                <li key={`location-${index}`} className="flex items-center space-x-2">
-                  <MapPin className="text-gray-400 w-5 h-5 shrink-0" />
-                  <span className="">{loc.address}</span>
+                <li key={`location-${index}`} className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 mt-1 shrink-0" />
+                  <span className="whitespace-pre-line leading-snug">
+                    {loc.address}
+                  </span>
                 </li>
               ))}
 

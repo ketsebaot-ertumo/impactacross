@@ -24,8 +24,8 @@ const fallbackData = {
     { id: "2", number: "+251911364755" },
   ],
   locations: [
-    { id: "1", address: "Bole woreda 04, Roadmap Building, Addis Ababa, Ethiopia" },
-    { id: "2", address: "9 Vintage 47, Flacon Street, D'Urbanvalle, Cape Town 7550, South Africa" },
+    { id: "1", address: "Bole Sub City, Woreda 04 Roadmap Building (Near Lem Hotel) Addis Ababa, Ethiopia." },
+    { id: "2", address: "9 Vintage 47 Flacon Street D’Urbanvalle Cape Town 7550 South Africa" },
   ],
 };
 
@@ -82,7 +82,6 @@ export default function Contact() {
                   <h2 className="text-xl font-semibold pt-2">Our Address</h2>
                   {fallbackData.locations.map((location, i) => (
                     <div key={location.id || i}>
-                      {/* <h3 className="font-semibold text-gray-900">{location.address}</h3> */}
                       <p className="text-gray-600">{location.address}</p>
                     </div>
                   ))}

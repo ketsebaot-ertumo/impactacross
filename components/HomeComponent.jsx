@@ -44,7 +44,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative overflow-visible mt-[-60px] sm:mt-[-80px]">
+        <div className="relative overflow-visible mt-[-70px] sm:mt-[-120px]">
           <MissionVisionObjective />
         </div>
       </div>

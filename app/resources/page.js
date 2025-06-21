@@ -51,8 +51,8 @@ export default function ResourceGrid() {
                 className="w-full h-60 sm:h-90 object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
-            <div className="absolute inset-0 flex items-center max-w-6xl mx-auto pl-8 lg:pl-0">
-                <div className="text-white text-3xl md:text-4xl font-bold border-b pb-4">
+            <div className="absolute inset-0 flex items-center">
+                <div className="text-white text-4xl font-bold border-b pb-4 max-w-xl">
                     Resources
                 </div>
             </div>

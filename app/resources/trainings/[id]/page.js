@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import Loader from "../../../../components/Loader";
-import { getSingleTrainingPost } from "../../../lib/routes";
+import { getDataById } from "../../../lib/routes";
+import Link from "next/link";
 
 export default function PublicationDetail() {
   const [post, setPost] = useState({});
@@ -15,13 +16,11 @@ export default function PublicationDetail() {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        const latestPost = await getSingleTrainingPost(id);
-        if (latestPost) {
-          setPost( latestPost );
+        const {data} = await getDataById("trainings", id);
+        if (data) {
+          setPost( data );
         }
       } catch (err) {
-        toast.error('Could Not Load Training Post Data.');
-        // console.error("Could not load training post data",err);
         setError("Could not load training post data.");
       } finally {
         setLoading(false);
@@ -71,7 +70,17 @@ export default function PublicationDetail() {
                       className="object-cover brightness-[0.5]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
+                    
                     <div className="z-20 text-center px-6">
+                      <div className="w-full flex justify-start ml-[-60px] mt-[-120px]">
+                          <Link
+                              href={`/resources/trainings`}
+                              className="text-green-600 hover:opacity-60 transition text-md font-medium mb-6 inline-block"
+                          >
+                              ← Back to trainings
+                          </Link>
+                      </div>
+
                       <h1 className="text-white font-serif text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg max-w-4xl mx-auto">
                           {post.title}
                       </h1>

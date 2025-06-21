@@ -4,11 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
-import { getAllPublication } from "../../lib/routes";
-import toast from "react-hot-toast";
+import { getAllData } from "../../lib/routes";
+
 
 export default function Publications() {
-
     const [resources, setResources] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -19,22 +18,20 @@ export default function Publications() {
     useEffect(() => {
       const loadPublications = async () => {
         try {
-            const response = await getAllPublication(currentPage, pageSize);
-          
+            const response = await getAllData("publications", currentPage, pageSize);
             if (response.data?.length) {
                 setResources(response.data);
                 setTotalPages(response.pagination.totalPages);
             }
         } catch (err) {
-            toast.error('Could Not Load Publication Data.');
-            // console.error("Could not load publication data:", err);
             setError("Could not load training post data.");
         } finally {
             setLoading(false);
         }
       };
       loadPublications();
-    }, [currentPage, pageSize]);
+    }, [currentPage, pageSize, totalPages]);
+
 
     const handlePagination = (page) => {
       if (page >= 1 && page <= totalPages) {
@@ -44,14 +41,14 @@ export default function Publications() {
 
     if (loading)
         return (
-            <div className="h-screen flex justify-center">
+            <div className="h-[70vh] flex justify-center">
             <Loader />
             </div>
         );
 
         if(error){
             return (
-                <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+                <div className="h-[70vh] flex items-center justify-center text-red-600 text-2xl">
                     Unable to fetch data.
                 </div>
             );
@@ -59,7 +56,7 @@ export default function Publications() {
 
         if(!resources){
         return (
-            <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
+            <div className="h-[70vh] flex items-center justify-center text-red-600 text-lg">
                 Publication not found.
             </div>
         );
@@ -77,7 +74,16 @@ export default function Publications() {
                     </main>
                 ) : (
                     <div>
-                        <main className="container px-8 py-12 text-gray-800">
+                        <div className="max-w-6xl mx-auto w-full pt-10 px-6">
+                            <Link
+                                href="/resources"
+                                className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+                            >
+                                ← Back to Resources
+                            </Link>
+                        </div>
+
+                        <main className="container px-8 pb-20 pt-4 text-gray-800">
                             <h1 className="text-4xl font-bold text-center">📑 Publications</h1>
                         </main>
                         
@@ -116,9 +122,9 @@ export default function Publications() {
                             ))}
                         </div>
 
-                        {/* Pagination */}
-                        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-14 border-t p-8 lg:px-0">
-                            <div className="flex items-center space-x-3">
+                    {/* Pagination */}
+                    <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
+                        <div className="flex items-center space-x-3">
                             <button
                                 onClick={() => handlePagination(currentPage - 1)}
                                 disabled={currentPage === 1}
@@ -162,7 +168,7 @@ export default function Publications() {
                                 }}
                                 className="border rounded px-2 py-1 text-sm text-gray-400"
                             >
-                                {[3, 5, 10, 25].map((size) => (
+                                {[5, 10, 25, 50, 100].map((size) => (
                                 <option key={size} value={size}>
                                     {size}
                                 </option>

@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
-import { getAllMultimedias } from "../../lib/routes";
-import toast from "react-hot-toast";
+import { getAllData } from "../../lib/routes";
+import { useParams } from "next/navigation";
+
 
 export default function Publications() {
-
     const [resources, setResources] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,24 +20,19 @@ export default function Publications() {
     useEffect(() => {
       const loadMultimedias = async () => {
         try {
-            const response = await getAllMultimedias(currentPage, pageSize);
-          
+            const response = await getAllData("multimedias", currentPage, pageSize);
             if (response.data?.length) {
                 setResources(response.data);
                 setTotalPages(response.pagination.totalPages);
-                setTotal(response.pagination.total);
-                setCurrentPage(response.pagination.page);
             }
         } catch (err) {
-            toast.error('Could Not Load Multimedia Post Data.');
-            // console.error("Could not load multimedia data:", + err);
             setError("Could not load multimedia data.");
         } finally {
           setLoading(false);
         }
       };
       loadMultimedias();
-    }, [currentPage, pageSize]);
+    }, [currentPage, pageSize, totalPages]);
 
     const handlePagination = (page) => {
       if (page >= 1 && page <= totalPages) {
@@ -116,8 +111,9 @@ export default function Publications() {
                                 </Link>
                             ))}
                         </div>
+
                         {/* Pagination */}
-                        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-14 border-t p-8 lg:px-0">
+                         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
                             <div className="flex items-center space-x-3">
                                 <button
                                     onClick={() => handlePagination(currentPage - 1)}

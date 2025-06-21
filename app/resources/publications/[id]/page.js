@@ -5,7 +5,8 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import Loader from "../../../../components/Loader";
 import { Download } from "lucide-react";
-import { getSinglePublicationPost } from "../../../lib/routes";
+import { getDataById } from "../../../lib/routes";
+
 
 export default function PublicationDetail() {
   const [post, setPost] = useState({});
@@ -16,13 +17,11 @@ export default function PublicationDetail() {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        const latestPost = await getSinglePublicationPost(id);
-        if (latestPost) {
-          setPost( latestPost );
+        const {data} = await getDataById("publications", id);
+        if (data) {
+          setPost( data );
         }
       } catch (err) {
-        toast.error('Could Not Load Publication Data.');
-        // console.error("Could not load publication data",err);
         setError("Could not load publication data.");
       } finally {
         setLoading(false);

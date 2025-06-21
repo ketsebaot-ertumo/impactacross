@@ -31,7 +31,7 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-12 lg:py-20">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-12 pt-6 lg:py-20">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left: Text */}
         <div className="space-y-8">

@@ -6,26 +6,24 @@ import Header from "../../../../components/Header";
 import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import Loader from "../../../../components/Loader";
-import { getSingleBlogPost } from "../../../lib/routes";
+import { getDataById } from "../../../lib/routes";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function BlogDetails() {
     const [blog, setBlog] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const { id } = useParams();
+    const { entity, id } = useParams();
 
     useEffect(() => {
         const loadBlog = async () => {
         try {
-            const blog = await getSingleBlogPost(id);
-            if (blog) {
-                setBlog(blog);
-            } else {
-                return notFound();
+            const {data} = await getDataById(entity, id);
+            if (data) {
+                setBlog(data);
             }
         } catch (err) {
-            toast.error("This blog post couldn't be loaded.");
             // console.error("Blog error:", err);            
             setError("Could not load blog data.");
         } finally {
@@ -36,16 +34,14 @@ export default function BlogDetails() {
         loadBlog();
     }, [id]);
 
-    if(loading) return <div className="h-screen flex justify-center"><Loader /></div>;
+    if(loading) return <div className="min-h-[80vh] flex justify-center"><Loader /></div>;
 
     return (
         <>
-            <Header />
-
             {(!blog || !blog?.id) ? (
                 <main className="container max-w-6xl mx-auto px-6 py-20 text-center min-h-[70vh] flex flex-col justify-center items-center">
                     <h1 className="text-4xl font-bold text-red-500 mb-4">❌ Oops!</h1>
-                    <p className="text-gray-600 text-lg">"No Blog Post Found.</p>
+                    <p className="text-gray-600 text-lg">No Blog Post Found.</p>
                 </main>
             ) :(
                 <div>
@@ -56,8 +52,19 @@ export default function BlogDetails() {
                             fill
                             className="object-cover opacity-30 blur-sm"
                         />
-                        <div className="z-10 text-center px-6">
-                            <h1 className="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg max-w-4xl mx-auto">{blog.title}</h1>
+                        
+                        <div>
+                            <div className="w-full absolute mt-[-80px] ml-[-80px]">
+                                <Link
+                                    href={`/resources/${entity}`}
+                                    className="text-green-600 hover:opacity-60 transition text-md font-medium mb-6 inline-block"
+                                >
+                                    ← Back to {`${entity}`}
+                                </Link>
+                            </div>
+                            <div className="z-10 text-center px-6">
+                                <h1 className="text-4xl md:text-5xl font-semibold text-white drop-shadow-lg max-w-4xl mx-auto">{blog.title}</h1>
+                            </div>
                         </div>
                     </section>
 
@@ -83,7 +90,6 @@ export default function BlogDetails() {
                         </div>
                     </section>
 
-                    <Footer />
                 </div>
             )}
         </>

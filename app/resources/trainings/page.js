@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
 import toast from "react-hot-toast";
-import { getAllTrainings } from "../../lib/routes";
+import { getAllData } from "../../lib/routes";
 
 export default function Trainings() {
   const [resources, setResources] = useState([]);
@@ -18,11 +18,10 @@ export default function Trainings() {
   useEffect(() => {
     const loadTrainings = async () => {
       try {
-        const response = await getAllTrainings(currentPage, pageSize);
+        const response = await getAllData("trainings", currentPage, pageSize);
         if (response.data?.length) {
           setResources(response.data);
           setTotalPages(response.pagination.totalPages);
-          setCurrentPage(response.pagination.page);
         }
       } catch (err) {
         toast.error("Could not load training posts.");
@@ -32,10 +31,12 @@ export default function Trainings() {
       }
     };
     loadTrainings();
-  }, [currentPage, pageSize]);
+  }, [currentPage, pageSize, totalPages]);
+
 
   const handlePagination = (page) => {
-    if (page >= 1 && page <= totalPages) setCurrentPage(page);
+    if (page >= 1 && page <= totalPages) 
+      setCurrentPage(page);
   };
 
   if (loading)
@@ -66,9 +67,18 @@ export default function Trainings() {
       {loading ? (
         <Loader />
       ) : (
-        <main className="max-w-6xl mx-auto py-16">
+        <main className="max-w-6xl mx-auto pb-12">
+          <div className="max-w-6xl mx-auto w-full pt-12 px-4">
+              <Link
+                  href="/resources"
+                  className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+              >
+                  ← Back to Resources
+              </Link>
+          </div>
+
           <section className="text-center mb-12">
-            <h1 className="text-4xl font-extrabold text-gray-800 mb-2">🎓 Training Programs</h1>
+            <h1 className="text-4xl font-extrabold text-gray-800 mb-6">🎓 Training Programs</h1>
             <p className="text-gray-600 text-base">Explore our latest and upcoming training opportunities.</p>
           </section>
 
@@ -124,7 +134,7 @@ export default function Trainings() {
                 </div>
 
                 {/* Pagination */}
-                <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-14 border-t pt-8">
+                <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
                     <div className="flex items-center space-x-3">
                         <button
                             onClick={() => handlePagination(currentPage - 1)}
@@ -168,7 +178,7 @@ export default function Trainings() {
                             }}
                             className="border rounded px-2 py-1 text-sm text-gray-400"
                         >
-                            {[2, 5, 10, 25].map((size) => (
+                            {[5, 10, 25, 50, 100].map((size) => (
                             <option key={size} value={size}>
                                 {size}
                             </option>

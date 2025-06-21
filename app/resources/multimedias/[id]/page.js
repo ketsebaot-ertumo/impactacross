@@ -15,13 +15,13 @@ export default function PublicationDetail() {
   useEffect(() => {
     const loadPost = async () => {
       try {
-        const latestPost = await getSingleMultimediaPost(id);
-        if (latestPost) {
-          setPost( latestPost );
+        const {data} = await getDataById("multimedias", id);
+        console.log("data:", data);
+        if (data) {
+          setPost(data);
         }
       } catch (err) {
-        toast.error('Could Not Load Multimedia PostData.');
-        // console.error("Could not load multimedia post data",err);
+        console.error("error occur:", err)
         setError("Could not load multimedia post data.");
       } finally {
         setLoading(false);
@@ -40,7 +40,7 @@ export default function PublicationDetail() {
 
   if(error){
       return (
-          <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+          <div className="min-h-[40vh] flex items-center justify-center text-red-600 text-2xl">
               Unable to fetch data.
           </div>
       );
@@ -48,7 +48,7 @@ export default function PublicationDetail() {
 
   if(!post){
       return (
-          <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
+          <div className="min-h-[60vh] flex items-center justify-center text-red-600 text-lg">
               Multimedias not found.
           </div>
       );
@@ -71,7 +71,16 @@ export default function PublicationDetail() {
                       className="object-cover brightness-[0.5]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
+                    
                     <div className="z-20 text-center px-6">
+                      {/* <div className="max-w-6xl mx-auto w-full pt-12 px-4">
+                          <Link
+                              href="/resources"
+                              className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+                          >
+                              ← Back to Resources
+                          </Link>
+                      </div> */}
                       <h1 className="text-white font-serif text-4xl md:text-5xl lg:text-5xl font-bold drop-shadow-lg max-w-4xl mx-auto">
                           {post.title}
                       </h1>

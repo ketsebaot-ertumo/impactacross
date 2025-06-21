@@ -24,8 +24,8 @@ const fallbackData = {
     { id: "2", number: "+251911364755" },
   ],
   locations: [
-    { id: "1", address: "Addis Ababa, Ethiopia" },
-    { id: "2", address: "7550, Cape Town, South Africa" },
+    { id: "1", address: "Bole woreda 04, Roadmap Building, Addis Ababa, Ethiopia" },
+    { id: "2", address: "9 Vintage 47, Flacon Street, D'Urbanvalle, Cape Town 7550, South Africa" },
   ],
 };
 

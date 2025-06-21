@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Loader from "../../../components/Loader";
-import { getAllBlogs } from "../../lib/routes";
+import { getAllBlogs, getAllData } from "../../lib/routes";
 
 export default function Blogs() {
     const [resources, setResources] = useState([]);
@@ -17,7 +17,8 @@ export default function Blogs() {
     useEffect(() => {
         const loadBlogs = async () => {
             try {
-                const response = await getAllBlogs(currentPage, pageSize);
+                // const response = await getAllBlogs(currentPage, pageSize);
+                const response = await getAllData("blogs", currentPage, pageSize);
                 if (response.data?.length) {
                     setResources(response.data);
                     setTotalPages(response.pagination.totalPages);
@@ -32,7 +33,7 @@ export default function Blogs() {
             }
         };
         loadBlogs();
-    }, [currentPage, pageSize]);
+    }, [currentPage, pageSize, totalPages]);
 
     const handlePagination = (page) => {
         if (page >= 1 && page <= totalPages) {
@@ -75,7 +76,16 @@ export default function Blogs() {
                     </main>
                 ) : (
                         <div>
-                            <main className="max-w-6xl mx-auto container px-8 py-12 text-gray-800">
+                            <div className="max-w-6xl mx-auto w-full pt-10 px-6">
+                                <Link
+                                    href="/resources"
+                                    className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+                                >
+                                    ← Back to Resources
+                                </Link>
+                            </div>
+
+                            <main className="max-w-6xl mx-auto container px-8 pt-4 pb-20 text-gray-800">
                                 <h1 className="text-4xl font-bold text-center">📝 Blog Timeline</h1>
                             </main>
                             <div className="space-y-24 max-w-6xl mx-auto px-8 lg:px-0">
@@ -117,7 +127,7 @@ export default function Blogs() {
                             </div>
 
                             {/* Pagination & Controls */}
-                            <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 mt-16 border-t py-8">
+                            <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t py-8">
                                 <div className="flex items-center space-x-2">
                                     <button
                                         onClick={() => handlePagination(currentPage - 1)}

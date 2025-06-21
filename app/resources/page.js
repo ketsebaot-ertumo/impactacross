@@ -41,45 +41,65 @@ export default function ResourceGrid() {
     loadResources();
   }, []);  
 
+  if (loading)
+    return (
+        <div className="h-[70vh] flex justify-center">
+          <p>Resource data Loading...</p>
+          <Loader />
+        </div>
+    );
+
+  if(error){
+      return (
+          <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+              <div>
+                  <h1 className="text-4xl font-bold mb-4">Error</h1>
+                  <p>{error || "Error occur on fetching resource data."}</p>
+              </div>
+          </div>
+      );
+  }
+
+  if(!resources && !resources?.length){
+      return (
+          <div className="min-h-screen flex items-center justify-center text-gray-500 text-lg">
+            <p>Currently, there are no resources available. Please check back later.</p>
+          </div>
+      );
+  }
+
   return (
     <>
         <div className="relative">
             <img 
-                // src="/home.jpg"
                 src="https://res.cloudinary.com/dq6mvqivd/image/upload/v1750097915/ImpactAcross/images/photo_5944760772829759998_y_zwrgzh.jpg"
                 alt="Consultancy Services"
                 className="w-full h-60 sm:h-90 object-cover"
             />
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
-            <div className="absolute inset-0 flex items-center">
-                <div className="text-white text-4xl font-bold border-b pb-4 max-w-xl">
-                    Resources
+    
+            <div className="absolute inset-0 flex items-center max-w-6xl mx-auto">
+              <div className="mx-6 md:px-9 lg:px-12">
+                <div className="text-white text-4xl font-bold border-b pb-4">
+                  Resources
                 </div>
+              </div>
             </div>
+
         </div>
 
-        {loading ? (
-          <div className="h-[40vh] flex justify-center items-center"><Loader/></div>
-        ) : (
-            (resources.length === 0 || !resources || resources === null) ? (
-                <main className="container max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 py-36">
-                    <h1 className="text-4xl font-bold mb-6">❌ Oops!</h1>
-                    <p className="text-lg">No Resources found.</p>
-                </main>
-            ) : (
-                <div>
-                  <section className="max-w-6xl mx-auto px-6 py-12">
-                      <h2 className="text-4xl font-bold text-center text-gray-800 pb-12">Our Resources</h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                        {resources.map((item) => (
-                          <div key={item.id} className="h-full">
-                            <ResourceCard key={item.id} {...item} />
-                          </div>
-                        ))}
-                      </div>
-                  </section>
-                </div>
-            ))}
+        <div>
+          <section className="max-w-6xl mx-auto px-6 py-12">
+              <h2 className="text-4xl font-bold text-center text-gray-800 py-16">Our Resources</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                {resources.map((item) => (
+                  <div key={item.id} className="h-full">
+                    <ResourceCard key={item.id} {...item} />
+                  </div>
+                ))}
+              </div>
+          </section>
+        </div>
     </>
   );
 }

@@ -58,22 +58,14 @@ export default function Blogs() {
     if(!resources){
         return (
             <div className="min-h-screen flex items-center justify-center text-red-600 text-lg">
-                Blogs not found.
+                <h1 className="text-3xl font-bold mb-4">❌ No post data Found</h1>
+                <p className="text-gray-600">Please check back later.</p>
             </div>
         );
     }
 
     return (
         <>
-            {loading ? (
-                <Loader />
-            ) : (
-                resources.length === 0 ? (
-                    <main className="container max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 py-36">
-                        <h1 className="text-4xl font-bold mb-6">❌ Oops!</h1>
-                        <p className="text-lg">No Blog Post Found.</p>
-                    </main>
-                ) : (
                         <div>
                             <div className="max-w-6xl mx-auto w-full pt-10 px-6">
                                 <Link
@@ -180,8 +172,6 @@ export default function Blogs() {
                             </div>
                             
                     </div>
-                )
-            )}
         </>
      );
 }

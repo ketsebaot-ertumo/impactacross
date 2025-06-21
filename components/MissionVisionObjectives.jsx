@@ -8,17 +8,17 @@ const valuesData = [
   {
     title: "Mission",
     description:
-      "Our core mission is to provide high quality <b>consultancy</b>, <b>training</b> and <b>research services</b> to our clients so as to help them make distinct and significant improvements in their programmes and projects.",
+      "ImpactAcross drives sustainable and equitable development in Africa through research, consulting, and capacity-building, partnering with stakeholders to shape impactful policies and programs.",
   },
   {
     title: "Vision",
     description:
-      "Our vision is to become a <b>leading</b>, <b>preferred</b> and <b>trusted</b> development consulting firm in East and Horn of Africa. We use the most up-to-date research and evaluation designs and methods to inform development strategy in the region.",
+      "To be a leading African thought partner and catalyst for sustainable development, empowering communities and institutions through transformative research, strategic advice, and inclusive innovation.",
   },
   {
     title: "Core Values",
     description:
-      "Our core values of <b>Integrity</b>, <b>Respect</b>, <b>Excellence</b>, <b>Innovation</b>, and <b>Independence</b> guide us in delivering ethical, high-quality, and impactful solutions with creativity and impartiality.",
+      "We act with integrity, respect, and a drive for excellence, grounding our work in evidence, collaboration, and innovation.",
   },
 ];
 

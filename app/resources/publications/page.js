@@ -1,184 +1,514 @@
+// "use client";
+
+// import Link from "next/link";
+// import Image from "next/image";
+// import { useEffect, useState } from "react";
+// import Loader from "../../../components/Loader";
+// import { getAllData } from "../../lib/routes";
+
+
+// export default function Publications() {
+//     const [resources, setResources] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+//     const [currentPage, setCurrentPage] = useState(1);
+//     const [totalPages, setTotalPages] = useState(1);
+//     const [pageSize, setPageSize] = useState(3);
+
+//     useEffect(() => {
+//       const loadPublications = async () => {
+//         try {
+//             const response = await getAllData("publications", currentPage, pageSize);
+//             if (response.data?.length) {
+//                 setResources(response.data);
+//                 setTotalPages(response.pagination.totalPages);
+//             }
+//         } catch (err) {
+//             setError("Could not load training post data.");
+//         } finally {
+//             setLoading(false);
+//         }
+//       };
+//       loadPublications();
+//     }, [currentPage, pageSize, totalPages]);
+
+
+//     const handlePagination = (page) => {
+//       if (page >= 1 && page <= totalPages) {
+//         setCurrentPage(page);
+//       }
+//     };
+
+//     if (loading)
+//         return (
+//             <div className="h-[70vh] flex justify-center">
+//             <Loader />
+//             </div>
+//         );
+
+//         if(error){
+//             return (
+//                 <div className="h-[70vh] flex items-center justify-center text-red-600 text-2xl">
+//                     Unable to fetch data.
+//                 </div>
+//             );
+//         }
+
+//         if(!resources){
+//         return (
+//             <div className="h-[70vh] flex items-center justify-center text-red-600 text-lg">
+//                 Publication not found.
+//             </div>
+//         );
+//     }
+
+//     return (
+//         <>
+//             {loading ? (
+//                 <Loader />
+//             ) : (
+//                 resources.length === 0 ? (
+//                     <main className="container max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 py-36">
+//                         <h1 className="text-4xl font-bold mb-6">❌ Oops!</h1>
+//                         <p className="text-lg">No Publication Post Found.</p>
+//                     </main>
+//                 ) : (
+//                     <div>
+//                         <div className="max-w-6xl mx-auto w-full pt-10 px-6">
+//                             <Link
+//                                 href="/resources"
+//                                 className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+//                             >
+//                                 ← Back to Resources
+//                             </Link>
+//                         </div>
+
+//                         <main className="container px-8 pb-20 pt-4 text-gray-800">
+//                             <h1 className="text-4xl font-bold text-center">📑 Publications</h1>
+//                         </main>
+                        
+//                         <div className="max-w-6xl mx-auto grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-8">
+//                             {resources.map((item) => (
+//                                 <Link key={item.id} href={`/resources/${item.name}/${item.id}`} passHref>
+//                                     <div className="group border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white cursor-pointer">
+//                                         {/* Image */}
+//                                         <div className="relative h-56 w-full overflow-hidden">
+//                                         <Image
+//                                             src={item.imageURL ? item.imageURL : ""}
+//                                             alt={item.title}
+//                                             fill
+//                                             className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
+//                                         />
+//                                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-4 py-2 text-white text-sm">
+//                                             By {item.author} —
+//                                             {new Date(item.published_at).toLocaleDateString("en-US", {
+//                                                 year: "numeric", month: "long", day: "numeric",
+//                                             })}
+//                                         </div>
+//                                         </div>
+
+//                                         {/* Content */}
+//                                         <div className="p-5 space-y-3">
+//                                         <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+//                                             {item.title}
+//                                         </h3>
+//                                         <p className="text-gray-600 text-sm line-clamp-3">{item.content}</p>
+//                                         <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
+//                                             Read more &gt;&gt;
+//                                         </div>
+//                                         </div>
+//                                     </div>
+//                                 </Link>
+//                             ))}
+//                         </div>
+
+//                     {/* Pagination */}
+//                     <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
+//                         <div className="flex items-center space-x-3">
+//                             <button
+//                                 onClick={() => handlePagination(currentPage - 1)}
+//                                 disabled={currentPage === 1}
+//                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+//                                 currentPage === 1
+//                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+//                                     : "bg-green-400 text-white hover:bg-green-500"
+//                                 }`}
+//                             >
+//                                 ← Previous
+//                             </button>
+
+//                                 <span className="text-gray-700 text-sm font-medium">
+//                                     Page <span className="font-bold">{currentPage}</span> of{" "}
+//                                     <span className="font-bold">{totalPages}</span>
+//                             </span>
+
+//                             <button
+//                                 onClick={() => handlePagination(currentPage + 1)}
+//                                 disabled={currentPage === totalPages}
+//                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+//                                 currentPage === totalPages
+//                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+//                                         : "bg-green-600 text-white hover:bg-green-700"
+//                                 }`}
+//                             >
+//                                 Next →
+//                             </button>
+//                             </div>
+
+//                             <div className="flex items-center gap-2">
+//                             <label htmlFor="pageSize" className="text-sm text-gray-700 font-medium">
+//                                 Posts per page:
+//                             </label>
+//                             <select
+//                                 id="pageSize"
+//                                 value={pageSize}
+//                                 onChange={(e) => {
+//                                 setPageSize(Number(e.target.value));
+//                                 setCurrentPage(1);
+//                                 }}
+//                                 className="border rounded px-2 py-1 text-sm text-gray-400"
+//                             >
+//                                 {[5, 10, 25, 50, 100].map((size) => (
+//                                 <option key={size} value={size}>
+//                                     {size}
+//                                 </option>
+//                                 ))}
+//                             </select>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 )
+//             )}
+//         </>
+//     );
+// };
+
+
+
+
+// "use client";
+
+// import Link from "next/link";
+// import Image from "next/image";
+// import { useEffect, useState } from "react";
+// import Loader from "../../../components/Loader";
+// import { getAllData } from "../../lib/routes";
+
+
+// export default function Publications() {
+//     const [resources, setResources] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+//     const [currentPage, setCurrentPage] = useState(1);
+//     const [totalPages, setTotalPages] = useState(1);
+//     const [pageSize, setPageSize] = useState(3);
+
+//     useEffect(() => {
+//       const loadPublications = async () => {
+//         try {
+//             const response = await getAllData("publications", currentPage, pageSize);
+//             if (response.data?.length) {
+//                 setResources(response.data);
+//                 setTotalPages(response.pagination.totalPages);
+//             }
+//         } catch (err) {
+//             setError("Could not load training post data.");
+//         } finally {
+//             setLoading(false);
+//         }
+//       };
+//       loadPublications();
+//     }, [currentPage, pageSize, totalPages]);
+
+
+//     const handlePagination = (page) => {
+//       if (page >= 1 && page <= totalPages) {
+//         setCurrentPage(page);
+//       }
+//     };
+
+//     if (loading)
+//         return (
+//             <div className="h-[70vh] flex justify-center">
+//             <Loader />
+//             </div>
+//         );
+
+//         if(error){
+//             return (
+//                 <div className="h-[70vh] flex items-center justify-center text-red-600 text-2xl">
+//                     Unable to fetch data.
+//                 </div>
+//             );
+//         }
+
+//         if(!resources){
+//         return (
+//             <div className="h-[70vh] flex items-center justify-center text-red-600 text-lg">
+//                 <h1 className="text-4xl font-bold mb-6">❌ Oops!</h1>
+//                 <p className="text-lg">No Publication Post Found.</p>
+//             </div>
+//         );
+//     }
+
+//     return (
+//         <>
+//                     <div>
+//                         <div className="max-w-6xl mx-auto w-full pt-10 px-6">
+//                             <Link
+//                                 href="/resources"
+//                                 className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+//                             >
+//                                 ← Back to Resources
+//                             </Link>
+//                         </div>
+
+                    
+
+//                     {/* Pagination */}
+//                     {/* <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
+//                         <div className="flex items-center space-x-3">
+//                             <button
+//                                 onClick={() => handlePagination(currentPage - 1)}
+//                                 disabled={currentPage === 1}
+//                                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+//                                 currentPage === 1
+//                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+//                                     : "bg-green-400 text-white hover:bg-green-500"
+//                                 }`}
+//                             >
+//                                 ← Previous
+//                             </button>
+
+//                                 <span className="text-gray-700 text-sm font-medium">
+//                                     Page <span className="font-bold">{currentPage}</span> of{" "}
+//                                     <span className="font-bold">{totalPages}</span>
+//                             </span>
+
+//                             <button
+//                                 onClick={() => handlePagination(currentPage + 1)}
+//                                 disabled={currentPage === totalPages}
+//                                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+//                                 currentPage === totalPages
+//                                     ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+//                                         : "bg-green-600 text-white hover:bg-green-700"
+//                                 }`}
+//                             >
+//                                 Next →
+//                             </button>
+//                             </div>
+
+//                             <div className="flex items-center gap-2">
+//                             <label htmlFor="pageSize" className="text-sm text-gray-700 font-medium">
+//                                 Posts per page:
+//                             </label>
+//                             <select
+//                                 id="pageSize"
+//                                 value={pageSize}
+//                                 onChange={(e) => {
+//                                 setPageSize(Number(e.target.value));
+//                                 setCurrentPage(1);
+//                                 }}
+//                                 className="border rounded px-2 py-1 text-sm text-gray-400"
+//                             >
+//                                 {[5, 10, 25, 50, 100].map((size) => (
+//                                 <option key={size} value={size}>
+//                                     {size}
+//                                 </option>
+//                                 ))}
+//                             </select>
+//                             </div>
+//                         </div>
+//                     </div> */}
+//                 </div>
+//         </>
+//     );
+// };
+
+
+
+
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../../../components/Loader";
 import { getAllData } from "../../lib/routes";
 
-
 export default function Publications() {
-    const [resources, setResources] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [pageSize, setPageSize] = useState(3);
+  const [resources, setResources] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
-    useEffect(() => {
-      const loadPublications = async () => {
-        try {
-            const response = await getAllData("publications", currentPage, pageSize);
-            if (response.data?.length) {
-                setResources(response.data);
-                setTotalPages(response.pagination.totalPages);
-            }
-        } catch (err) {
-            setError("Could not load training post data.");
-        } finally {
-            setLoading(false);
+  useEffect(() => {
+    const loadPublications = async () => {
+      try {
+        const response = await getAllData("publications", currentPage, pageSize);
+        if (response.data?.length) {
+          setResources(response.data);
+          setTotalPages(response.pagination?.totalPages || 1);
         }
-      };
-      loadPublications();
-    }, [currentPage, pageSize, totalPages]);
-
-
-    const handlePagination = (page) => {
-      if (page >= 1 && page <= totalPages) {
-        setCurrentPage(page);
+      } catch (err) {
+        setError("Could not load publication data.");
+      } finally {
+        setLoading(false);
       }
     };
 
-    if (loading)
-        return (
-            <div className="h-[70vh] flex justify-center">
-            <Loader />
-            </div>
-        );
+    loadPublications();
+  }, [currentPage, pageSize]);
 
-        if(error){
-            return (
-                <div className="h-[70vh] flex items-center justify-center text-red-600 text-2xl">
-                    Unable to fetch data.
-                </div>
-            );
-        }
-
-        if(!resources){
-        return (
-            <div className="h-[70vh] flex items-center justify-center text-red-600 text-lg">
-                Publication not found.
-            </div>
-        );
+  const handlePagination = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
     }
+  };
 
+  if (loading)
     return (
-        <>
-            {loading ? (
-                <Loader />
-            ) : (
-                resources.length === 0 ? (
-                    <main className="container max-w-6xl mx-auto px-6 py-12 text-center text-gray-500 py-36">
-                        <h1 className="text-4xl font-bold mb-6">❌ Oops!</h1>
-                        <p className="text-lg">No Publication Post Found.</p>
-                    </main>
-                ) : (
-                    <div>
-                        <div className="max-w-6xl mx-auto w-full pt-10 px-6">
-                            <Link
-                                href="/resources"
-                                className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
-                            >
-                                ← Back to Resources
-                            </Link>
-                        </div>
-
-                        <main className="container px-8 pb-20 pt-4 text-gray-800">
-                            <h1 className="text-4xl font-bold text-center">📑 Publications</h1>
-                        </main>
-                        
-                        <div className="max-w-6xl mx-auto grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-8">
-                            {resources.map((item) => (
-                                <Link key={item.id} href={`/resources/${item.name}/${item.id}`} passHref>
-                                    <div className="group border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 bg-white cursor-pointer">
-                                        {/* Image */}
-                                        <div className="relative h-56 w-full overflow-hidden">
-                                        <Image
-                                            src={item.imageURL ? item.imageURL : ""}
-                                            alt={item.title}
-                                            fill
-                                            className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent px-4 py-2 text-white text-sm">
-                                            By {item.author} —
-                                            {new Date(item.published_at).toLocaleDateString("en-US", {
-                                                year: "numeric", month: "long", day: "numeric",
-                                            })}
-                                        </div>
-                                        </div>
-
-                                        {/* Content */}
-                                        <div className="p-5 space-y-3">
-                                        <h3 className="line-clamp-2 text-xl font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
-                                            {item.title}
-                                        </h3>
-                                        <p className="text-gray-600 text-sm line-clamp-3">{item.content}</p>
-                                        <div className="inline-block italic text-green-600 text-sm font-medium mt-3 transition-all duration-300 hover:underline hover:text-green-800 hover:pl-1">
-                                            Read more &gt;&gt;
-                                        </div>
-                                        </div>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
-
-                    {/* Pagination */}
-                    <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 mt-16 border-t border-gray-400 py-8">
-                        <div className="flex items-center space-x-3">
-                            <button
-                                onClick={() => handlePagination(currentPage - 1)}
-                                disabled={currentPage === 1}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                currentPage === 1
-                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                    : "bg-green-400 text-white hover:bg-green-500"
-                                }`}
-                            >
-                                ← Previous
-                            </button>
-
-                                <span className="text-gray-700 text-sm font-medium">
-                                    Page <span className="font-bold">{currentPage}</span> of{" "}
-                                    <span className="font-bold">{totalPages}</span>
-                            </span>
-
-                            <button
-                                onClick={() => handlePagination(currentPage + 1)}
-                                disabled={currentPage === totalPages}
-                                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                currentPage === totalPages
-                                    ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                        : "bg-green-600 text-white hover:bg-green-700"
-                                }`}
-                            >
-                                Next →
-                            </button>
-                            </div>
-
-                            <div className="flex items-center gap-2">
-                            <label htmlFor="pageSize" className="text-sm text-gray-700 font-medium">
-                                Posts per page:
-                            </label>
-                            <select
-                                id="pageSize"
-                                value={pageSize}
-                                onChange={(e) => {
-                                setPageSize(Number(e.target.value));
-                                setCurrentPage(1);
-                                }}
-                                className="border rounded px-2 py-1 text-sm text-gray-400"
-                            >
-                                {[5, 10, 25, 50, 100].map((size) => (
-                                <option key={size} value={size}>
-                                    {size}
-                                </option>
-                                ))}
-                            </select>
-                            </div>
-                        </div>
-                    </div>
-                )
-            )}
-        </>
+      <div className="h-[70vh] flex justify-center items-center">
+        <Loader />
+      </div>
     );
-};
+
+  if (error) {
+    return (
+      <div className="h-[70vh] flex items-center justify-center text-red-600 text-xl">
+        {error}
+      </div>
+    );
+  }
+
+  if (!resources.length) {
+    return (
+      <div className="h-screen flex items-center justify-center text-red-600 text-lg">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-4">❌ No Publications Found</h1>
+          <p className="text-gray-600">Please check back later.</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <main className="max-w-7xl mx-auto px-6 py-16">
+        {/* Page Header */}
+        <div className="flex items-center justify-between mb-6">
+            <Link
+            href="/resources"
+            className="text-green-600 hover:text-green-800 text-sm font-medium hover:underline"
+            >
+            ← Back to Resources
+            </Link>
+        </div>
+        <h1 className="text-4xl font-bold text-gray-800 text-center pb-16">
+            Publications
+        </h1>
+
+      {/* Grid of Cards */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {resources.map((pub) => (
+          <div
+            key={pub.id}
+            className="group bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col"
+          >
+            {pub.image_url ? (
+              <img
+                src={pub.image_url}
+                alt={pub.title}
+                className="object-cover w-full h-48 transform group-hover:scale-105 transition-transform duration-300"
+              />
+            ) : (
+              <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">
+                No Image Available
+              </div>
+            )}
+
+            <div className="p-5 flex flex-col gap-2 flex-grow">
+              <h2 className="text-lg font-semibold text-gray-800 leading-snug line-clamp-2">
+                {pub.title}
+              </h2>
+              <p className="text-xs text-gray-500 italic">
+                {pub.authors}
+              </p>
+
+              <div className="mt-auto flex items-center justify-between text-sm text-gray-600">
+                <span>{pub.year}</span>
+                <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">
+                  {pub.publication_type}
+                </span>
+              </div>
+
+              <Link
+                href={`/resources/publications/${pub.id}`}
+                className="mt-3 inline-block text-sm text-green-600 hover:text-green-800 font-medium"
+              >
+                View Details →
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Pagination */}
+      <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-gray-300 pt-8">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => handlePagination(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              currentPage === 1
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                : "bg-green-700 text-white hover:bg-green-800"
+            }`}
+          >
+            ← Previous
+          </button>
+
+          <span className="text-sm text-gray-700">
+            Page <strong>{currentPage}</strong> of{" "}
+            <strong>{totalPages}</strong>
+          </span>
+
+          <button
+            onClick={() => handlePagination(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
+              currentPage === totalPages
+                ? "bg-gray-200 text-gray-500 cursor-not-allowed"
+                : "bg-green-700 text-white hover:bg-green-800"
+            }`}
+          >
+            Next →
+          </button>
+        </div>
+
+        {/* Page Size Selector */}
+        <div className="flex items-center gap-2">
+          <label htmlFor="pageSize" className="text-sm text-gray-700">
+            Per page:
+          </label>
+          <select
+            id="pageSize"
+            value={pageSize}
+            onChange={(e) => {
+              setPageSize(Number(e.target.value));
+              setCurrentPage(1);
+            }}
+            className="border rounded px-2 py-1 text-sm text-gray-700"
+          >
+            {[3, 6, 9, 12, 24].map((size) => (
+              <option key={size} value={size}>
+                {size}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+    </main>
+  );
+}
+

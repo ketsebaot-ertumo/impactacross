@@ -183,15 +183,16 @@ export default function OurExpertise() {
           <div className="hidden md:block h-48 w-[2px] bg-gradient-to-b from-green-700 via-green-500 to-green-700 rounded" />
 
           {/* Right: Image */}
-            <div className="md:w-1/2 w-full max-w-md mx-auto rounded-xl overflow-hidden shadow-lg border border-green-800">
-              <Image
-                src={data.image_url || "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750087594/ImpactAcross/images/photo_5944760772829759238_x_s1jd7a.jpg"}
-                alt="Expertise visual"
-                width={600}
-                height={400}
-                className="w-full h-[260px] object-cover"
-              />
-            </div>
+          <div className="md:w-1/2 w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white h-[260px] flex items-center justify-center">
+            <img
+              src={
+                data.image_url ||
+                "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750087594/ImpactAcross/images/photo_5944760772829759238_x_s1jd7a.jpg"
+              }
+              alt="Expertise visual"
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
         </motion.div>
       </div>
     </section>

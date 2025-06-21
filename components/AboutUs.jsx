@@ -92,9 +92,7 @@ export default function WhoWeAre() {
           <div className="backdrop-blur-xl rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
             <img
               src={
-                data?.image_url ||
-                "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649796/ImpactAcross/owner/download_luvang.jpg"
-              }
+                data?.image_url || "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750549533/ImpactAcross/images/WhatsApp_Image_2025-06-21_at_2.57.18_PM_kmt8nd.jpg"}
               alt="About ImpactAcross"
               className="object-cover w-full h-90 hover:scale-105 transition-transform duration-500"
             />

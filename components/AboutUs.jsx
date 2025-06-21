@@ -93,10 +93,10 @@ export default function WhoWeAre() {
             <img
               src={
                 data?.image_url ||
-                "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750154755/ImpactAcross/images/iwpna55jrk2jbixfridf.jpg"
+                "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649796/ImpactAcross/owner/download_luvang.jpg"
               }
               alt="About ImpactAcross"
-              className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
+              className="object-cover w-full h-90 hover:scale-105 transition-transform duration-500"
             />
           </div>
         </motion.div>

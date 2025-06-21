@@ -57,6 +57,26 @@ export default function Partners() {
         logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820837/ImpactAcross/partners/download_zesbir.png",
         link: "https://impactacross.com"
       },
+      {
+        name: "ELM Hermannnsburg Partner in Mission",
+        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750427163/ImpactAcross/images/noif6buxk0qxpuwsnfqu.jpg",
+        link: "https://impactacross.com"
+      },
+      {
+        name: "The Development Fund",
+        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428242/ImpactAcross/images/ez0jeax5llhdu60u85rd.jpg",
+        link: "https://impactacross.com"
+      },
+      {
+        name: "Siiqqee Women's Development Association",
+        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428413/ImpactAcross/images/srdjlfovejdf8qdrw397.jpg",
+        link: "https://impactacross.com"
+      },
+      {
+        name: "Ethiopian Coffee Forest Forum",
+        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428321/ImpactAcross/images/f8jm0iu7mts4da4ygbsy.jpg",
+        link: "https://impactacross.com"
+      },
     ],
   };
   const [partners, setPartners] = useState(defaultPartner);

@@ -33,8 +33,8 @@ export const metadata = {
   keywords: ["impactacross", "consultancy", "development", "sustainability", "reasearch"],
   authors: [{ name: "Ketsebaot Ertumo", url: "https://ketsebaot.vercel.app" }],
   icons: {
-    icon: '/logo1.jpeg',
-    apple: '/logo1.jpeg'
+    icon: '/images/logo1.jpeg',
+    apple: '/images/logo1.jpeg',
   },
   openGraph: {
     title: "ImpactAcross Consulting",

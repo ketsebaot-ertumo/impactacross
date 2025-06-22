@@ -20,12 +20,10 @@ export default function BlogDetails() {
         const loadBlog = async () => {
         try {
             const {data} = await getDataById("blogs", id);
-            console.log("blog:", data);
             if (data) {
                 setBlog(data);
             }
-        } catch (err) {
-            // console.error("Blog error:", err);            
+        } catch (err) {           
             setError("Could not load blog data.");
         } finally {
             setLoading(false);

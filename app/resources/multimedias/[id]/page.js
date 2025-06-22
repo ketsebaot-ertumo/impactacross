@@ -16,12 +16,10 @@ export default function PublicationDetail() {
     const loadPost = async () => {
       try {
         const {data} = await getDataById("multimedias", id);
-        console.log("data:", data);
         if (data) {
           setPost(data);
         }
       } catch (err) {
-        console.error("error occur:", err)
         setError("Could not load multimedia post data.");
       } finally {
         setLoading(false);

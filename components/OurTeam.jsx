@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaLinkedin, FaFacebook, FaXTwitter, FaGlobe } from 'react-icons/fa6';
 import { getAllData } from '../app/lib/routes';
 import Loader from './Loader';
-import { CropLandscapeOutlined, More } from '@mui/icons-material';
+import { CropLandscapeOutlined, Email, More } from '@mui/icons-material';
 
 const image_url = "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649749/ImpactAcross/owner/ourTeam_bkkp8t.png";
 const founder_image_url= "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750181190/ImpactAcross/images/WhatsApp_Image_2025-06-17_at_8.12.33_PM_jgj4wi.jpg";
@@ -16,7 +16,7 @@ const defaultData = [
     id: '1',
     name: "Kassahun K. Suleman(PhD)",
     position: "Founder & CTO",
-    email: "kassahunks@impactacross.com",
+    email: "Kassahun.kelifa@impactacross.com",
     linkedin: "https://linkedin.com/in/",
     facebook: "https://facebook.com",
     image_url: founder_image_url,
@@ -148,44 +148,53 @@ export default function OurTeam() {
         {/* Founder at center */}
         {founder && (
           <div className="flex justify-center mb-6">
-              <Link 
+              {/* <Link 
                 href={`/team-detail/${founder?.id}`}
-              >
+              > */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5 }}
                   className=" rounded-2xl p-6 w-76 sm:w-82 text-center"
                 >
-                  <Image
-                    src={founder.image_url || founder_image_url}
-                    alt={founder.name || "Founder Profile"}
-                    width={120}
-                    height={120}
-                    className="w-60 h-80 rounded-full mx-auto mb-4 object-cover"
-                  />
-                  <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
-                  <p className="text-sm text-emerald-600">{founder.position}</p>
+                  <Link 
+                    href={`/team-detail/${founder?.id}`}
+                  >
+                    <Image
+                      src={founder.image_url || founder_image_url}
+                      alt={founder.name || "Founder Profile"}
+                      width={120}
+                      height={120}
+                      className="w-60 h-80 rounded-full mx-auto mb-4 object-cover"
+                    />
+                    <h3 className="text-xl font-semibold text-gray-800">{founder.name}</h3>
+                    <p className="text-sm text-emerald-600">{founder.position}</p>
+                  </Link>
                   <div className="flex justify-center gap-3 mt-3" onClick={(e) => e.stopPropagation()}>
-                    <span onClick={() => router.push(founder.linkedin)}>
+                    <Link href={founder.linkedin} className='cursor-pointer'>
                       <FaLinkedin className="text-blue-600 text-xl hover:text-blue-800" />
-                    </span>
-                    <span onClick={() => router.push(founder.facebook)}>
+                    </Link>
+                    <Link href={founder.facebook}>
                       <FaFacebook className="text-blue-500 text-xl hover:text-blue-700" />
-                    </span>
+                    </Link>
+                    {founder?.email && (
+                        <a
+                          href={`mailto:${founder?.email}`}
+                          rel="noopener noreferrer"
+                          className="text-gray-500 hover:text-gray-700 transition mt-[-2px]"
+                        >
+                          <Email />
+                        </a>
+                    )}
                   </div>
                 </motion.div>
-              </Link> 
+              {/* </Link>  */}
           </div>
         )}
 
         {/* Grid of other team members */}
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {others.map((member, idx) => (
-              <Link 
-                key={idx}
-                href={`/team-detail/${member?.id}`} 
-              >
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 20 }}
@@ -194,25 +203,39 @@ export default function OurTeam() {
                   viewport={{ once: true }}
                   className="w-76 lg:w-64 mx-auto rounded-2xl p-6 text-center transition-shadow duration-300"
                 >
-                  <Image
-                    src={member.image_url || image_url}
-                    alt={member.name || "Team Profile"}
-                    width={100}
-                    height={100}
-                    className="w-60 h-60 rounded-full mx-auto object-cover"
-                  />
-                  <h4 className="text-lg font-medium text-gray-700">{member.name}</h4>
-                  <p className="text-sm text-gray-500">{member.position}</p>
+                  <Link 
+                    key={idx}
+                    href={`/team-detail/${member?.id}`} 
+                  >
+                    <Image
+                      src={member.image_url || image_url}
+                      alt={member.name || "Team Profile"}
+                      width={100}
+                      height={100}
+                      className="w-60 h-60 rounded-full mx-auto object-cover"
+                    />
+                    <h4 className="text-lg font-medium text-gray-700">{member.name}</h4>
+                    <p className="text-sm text-gray-500">{member.position}</p>
+                  </Link>
+
                   <div className="flex justify-center gap-3 mt-3" onClick={(e) => e.stopPropagation()}>
-                    <span onClick={() => router.push(member.linkedin)}>
+                    <Link href={member.linkedin}>
                       <FaLinkedin className="text-blue-600 text-xl hover:text-blue-800" />
-                    </span>
-                    <span onClick={() => router.push(member.facebook)}>
+                    </Link>
+                    <Link href={member.facebook}>
                       <FaFacebook className="text-blue-500 text-xl hover:text-blue-700" />
-                    </span>
+                    </Link>
+                    {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          rel="noopener noreferrer"
+                          className="text-gray-500 hover:text-gray-700 transition mt-[-2px]"
+                        >
+                          <Email />
+                        </a>
+                    )}
                   </div>
                 </motion.div>
-              </Link>
           ))}
         </div>
 

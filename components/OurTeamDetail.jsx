@@ -8,6 +8,7 @@ import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Email } from '@mui/icons-material';
 import { getDataById } from '../app/lib/routes';
 import { LoaderCircle } from 'lucide-react';
+import { FaFacebook } from 'react-icons/fa6';
 
 const image_url = 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1749649749/ImpactAcross/owner/ourTeam_bkkp8t.png';
 const teams= [
@@ -15,7 +16,7 @@ const teams= [
     id: "1",
     name: "Kassahun K. Suleman(PhD)",
     position: "Founder & CTO",
-    email: "kassahunks@impactacross.com",
+    email: "Kassahun.kelifa@impactacross.com",
     linkedin: "https://linkedin.com/in/",
     facebook: "https://facebook.com",
     description: "Kassahun has a PhD in Development Studies from University of the Western Cape in South Africa.  With 13+ years of experience working in different countries around the world, he has deep domain expertise in a broad cross section of disciplines ranging from agricultural development and food systems, rural development, natural resources governance, climate change adaptation and rural economy. Having managed and executed large and complex rural development projects in Ethiopia and conducted scientific research in various African countries, he is now proud to consolidate his 13+ years of research and project/program management expertise with that of clients who have the same values and beliefs in evidence-based and high quality solutions.",
@@ -156,24 +157,24 @@ export default function OurTeamDetail({ id }) {
                   <FaLinkedin size={24} />
                 </Link>
               )}
-              {member.twitter && (
+              {member.facebook && (
                 <Link
-                  href={member.twitter}
+                  href={member.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sky-500 hover:text-sky-600 transition"
                 >
-                  <FaTwitter size={24} />
+                  <FaFacebook size={24} />
                 </Link>
               )}
               {member.email && (
-                <Link
+                <a
                   href={`mailto:${member.email}`}
                   rel="noopener noreferrer"
                   className="text-gray-500 hover:text-gray-700 transition"
                 >
                   <Email />
-                </Link>
+                </a>
               )}
             </div>
 

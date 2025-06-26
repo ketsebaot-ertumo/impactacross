@@ -130,8 +130,8 @@ export default function OurTeam() {
 
           <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
 
-          <p className="text-center max-w-4xl mx-auto text-lg text-lg italic">
-            {description}
+          <p className="text-center max-w-4xl mx-auto text-lg text-lg italic px-6">
+            {description || ""}
           </p>
         </motion.div>
 

@@ -25,9 +25,7 @@ const fallbackData = {
   ],
   locations: [
     { id: "1", address: "Bole Sub City, Woreda 04 Roadmap Building (Near Lem Hotel) Addis Ababa, Ethiopia." },
-    { id: "2", address: "test" },
-    // { id: "1", address: "Bole Sub City, Woreda 04 Roadmap Building (Near Lem Hotel) Addis Ababa, Ethiopia." },
-    // { id: "2", address: "9 Vintage 47 Falcon Street D’Urbanvalle Cape Town 7550 South Africa" },
+    { id: "2", address: "9 Vintage 47 Falcon Street D’Urbanvalle Cape Town 7550 South Africa" },
   ],
 };
 
@@ -75,7 +73,7 @@ export default function Contact() {
             </div>
         </div>
 
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <section className="py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* LEFT: Contact Info */}

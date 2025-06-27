@@ -94,7 +94,7 @@ export default function WhoWeAre() {
               src={
                 data?.image_url || "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750549533/ImpactAcross/images/WhatsApp_Image_2025-06-21_at_2.57.18_PM_kmt8nd.jpg"}
               alt="About ImpactAcross"
-              className="object-cover w-full h-90 hover:scale-105 transition-transform duration-500"
+              className="object-cover sm:w-full sm:h-90 hover:scale-105 transition-transform duration-500"
             />
           </div>
         </motion.div>

@@ -108,7 +108,7 @@ export default function Footer() {
               {data?.locations.map((loc, index) => (
                 <li key={`location-${index}`} className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 mt-1 shrink-0" />
-                  <span className="whitespace-pre-line leading-snug">
+                  <span className="block leading-snug max-w-63 break-words">
                     {loc.address}
                   </span>
                 </li>

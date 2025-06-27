@@ -25,7 +25,9 @@ const fallbackData = {
   ],
   locations: [
     { id: "1", address: "Bole Sub City, Woreda 04 Roadmap Building (Near Lem Hotel) Addis Ababa, Ethiopia." },
-    { id: "2", address: "9 Vintage 47 Flacon Street D’Urbanvalle Cape Town 7550 South Africa" },
+    { id: "2", address: "test" },
+    // { id: "1", address: "Bole Sub City, Woreda 04 Roadmap Building (Near Lem Hotel) Addis Ababa, Ethiopia." },
+    // { id: "2", address: "9 Vintage 47 Falcon Street D’Urbanvalle Cape Town 7550 South Africa" },
   ],
 };
 
@@ -85,7 +87,7 @@ export default function Contact() {
 
                 <div className="space-y-2">
                   <h2 className="text-xl font-semibold pt-2">Our Address</h2>
-                  {fallbackData.locations.map((location, i) => (
+                  {data?.locations.map((location, i) => (
                     <div key={location.id || i}>
                       <p className="text-gray-600">{location.address}</p>
                     </div>
@@ -93,7 +95,7 @@ export default function Contact() {
 
                   <div className="pt-6 space-y-2">
                     <h3 className="text-xl font-semibold">Phone Numbers</h3>
-                    {fallbackData.phones.map((phone, i) => (
+                    {data?.phones.map((phone, i) => (
                       <div key={phone.id || i} className="flex items-center space-x-2">
                         <Phone className="text-green-600 w-5 h-5" />
                         <a href={`tel:${phone.number}`} className="hover:underline">

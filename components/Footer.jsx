@@ -51,7 +51,7 @@ export default function Footer() {
           {
               id: "u9bcc6dcygjbj6d8ku3qf",
               owner_id: "fcciuxdzhlemjomgmlirl",
-              address: `9 Vintage\n47 Flacon Street\nD’Urbanvalle\nCape Town 7550\nSouth Africa`,
+              address: `9 Vintage\n47 Falcon Street\nD’Urbanvalle\nCape Town 7550\nSouth Africa`,
           }
       ]
   }

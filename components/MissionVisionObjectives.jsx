@@ -79,7 +79,7 @@ export default function MissionVisionObjective() {
                 animate={{ x: 0, opacity: 1 }} // Slide in to center
                 exit={{ x: -100, opacity: 0 }} // Slide out to left
                 transition={{ duration: 0.5 }} // Smooth transition
-                className="absolute border border-green-800 w-84 h-46 m-6 bg-white shadow-sm rounded-3xl m-4 p-6 text-center flex flex-col justify-center items-center"
+                className="absolute border border-green-300 w-84 h-46 m-6 bg-white shadow-sm rounded-3xl m-4 p-6 text-center flex flex-col justify-center items-center"
               >
                 <h2 className="text-3xl font-bold mb-4 line-clamp-1">{data[activeIndex].title}</h2>
                 <Link href="/values"><p className="text-lg line-clamp-3" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }}/></Link>
@@ -92,7 +92,7 @@ export default function MissionVisionObjective() {
               ? data.slice(0, 2).map((item, index) => ( // Show only first two for medium screens
                   <motion.div
                     key={index}
-                    className="bg-white w-82 h-52 shadow-lg rounded-3xl border border-green-800 m-6 p-6 flex flex-col justify-center items-center text-center"
+                    className="bg-white w-82 h-52 shadow-lg rounded-3xl border border-green-300 m-6 p-6 flex flex-col justify-center items-center text-center"
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -107,7 +107,7 @@ export default function MissionVisionObjective() {
               : data.map((item, index) => ( // Show all items for large screens
                   <motion.div
                     key={index}
-                    className="bg-white border border-green-800 w-84 h-52 shadow-lg rounded-3xl m-6 p-6 flex flex-col justify-center items-center text-center"
+                    className="bg-white border border-green-300 w-84 h-52 shadow-lg rounded-3xl m-6 p-6 flex flex-col justify-center items-center text-center"
                     initial={{ opacity: 0, y: 100 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.2 }}

@@ -73,11 +73,11 @@ export default function Contact() {
             </div>
         </div>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main className="max-w-7xl mx-auto px-4 sm:px-12 lg:px-8">
           <section className="py-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* LEFT: Contact Info */}
-              <div className="space-y-6">
+              <div className="space-y-6 lg:pl-6">
                 <h2 className="text-4xl font-bold text-gray-600">Get in touch with our team</h2>
                 <p onClick={handleClimp} className={`text-lg text-gray-600 ${isClimped ? 'line-clamp-3': ''}`}>
                   We’d love to hear from you! Whether you’re interested in learning more about our services, exploring partnership opportunities, or have questions about your development projects, ImpactAcross is here to help.

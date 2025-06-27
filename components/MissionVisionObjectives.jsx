@@ -32,6 +32,7 @@ export default function MissionVisionObjective() {
     const fetchData = async () => {
       try {
         const {data} = await getAllData("sections/values/value");
+        console.log("data:", data);
         if (data) {
           setData(data);
         }
@@ -99,7 +100,7 @@ export default function MissionVisionObjective() {
                   >
                     <div className="">
                       <h2 className="text-2xl font-bold mb-4 line-clamp-1">{item.title}</h2>
-                      <Link href="/values"><p className="text-lg line-clamp-3" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }}/></Link>
+                      <Link href="/values"><p className="text-lg line-clamp-3" dangerouslySetInnerHTML={{ __html: item.description }} /></Link>
                     </div>
                   </motion.div>
                 ))
@@ -114,7 +115,7 @@ export default function MissionVisionObjective() {
                   >
                     <div className="">
                       <h2 className="text-2xl font-bold mb-4 line-clamp-1">{item.title}</h2>
-                      <Link href="/values"><p className="text-lg line-clamp-4" dangerouslySetInnerHTML={{ __html: data[activeIndex].description }}/></Link>
+                      <Link href="/values"><p className="text-lg line-clamp-3" dangerouslySetInnerHTML={{ __html: item.description }} /></Link>
                     </div>
                   </motion.div>
                 ))}

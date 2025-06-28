@@ -357,12 +357,12 @@ export default function Gallery() {
             </div>
 
             <div className='flex flex-wrap sm:gap-8 pt-6'>
-                {Object.entries(grouped || {}).map(([month, items], index) => (
+                {Object.entries(grouped || {}).reverse().map(([month, items], index) => (
                 <div key={month} className="mb-12">
                     <h3 className="text-2xl font-semibold text-gray-700 mb-6">{month}</h3>
 
                     <div className="relative rounded-xl flex  gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
-                    {items.map((img, i) => (
+                    {items.reverse().map((img, i) => (
                         <motion.div
                         key={i}
                         className="relative w-[250px] sm:w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
@@ -6,98 +7,109 @@ import Loader from './Loader';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
+
+const defaultPartner= [
+    {
+      name: "EOC-DICAC",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820477/ImpactAcross/partners/download_ol0tvw.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "EECMY DASSC",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820525/ImpactAcross/partners/download_cafjt9.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "NABU ",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820579/ImpactAcross/partners/download_ef7ugc.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "CARE",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820606/ImpactAcross/partners/download_w7dhej.png",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "PAPDA",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820713/ImpactAcross/partners/download_ujhzcj.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "Wako Gutu Foundation",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820716/ImpactAcross/partners/download_gzj5oj.png",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "Bread for the World/PADD",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750419967/ImpactAcross/images/WhatsApp_Image_2025-06-17_at_9.10.20_PM_vgv7jb.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "David and Lucile Packard Foundation",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820833/ImpactAcross/partners/download_ofqstg.png",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "BBC Media Action",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820837/ImpactAcross/partners/download_zesbir.png",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "ELM Hermannnsburg Partner in Mission",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750427163/ImpactAcross/images/noif6buxk0qxpuwsnfqu.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "The Development Fund",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428242/ImpactAcross/images/ez0jeax5llhdu60u85rd.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "Siiqqee Women's Development Association",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428413/ImpactAcross/images/srdjlfovejdf8qdrw397.jpg",
+      link: "https://impactacross.com"
+    },
+    {
+      name: "Ethiopian Coffee Forest Forum",
+      logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428321/ImpactAcross/images/f8jm0iu7mts4da4ygbsy.jpg",
+      link: "https://impactacross.com"
+    },
+]
+
+
 export default function Partners() {
-  const defaultPartner = {
-    title: 'Partners',
-    description:
-      'At ImpactAcross, we believe sustainable impact comes from strong, collaborative partnerships that unite diverse expertise and perspectives. By working with global and local organizations, we co-create data-driven solutions that empower communities and drive lasting, inclusive development.',
-    partners: [
-      {
-        name: "EOC-DICAC",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820477/ImpactAcross/partners/download_ol0tvw.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "EECMY DASSC",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820525/ImpactAcross/partners/download_cafjt9.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "NABU ",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820579/ImpactAcross/partners/download_ef7ugc.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "CARE",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820606/ImpactAcross/partners/download_w7dhej.png",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "PAPDA",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820713/ImpactAcross/partners/download_ujhzcj.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "Wako Gutu Foundation",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820716/ImpactAcross/partners/download_gzj5oj.png",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "Bread for the World/PADD",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750419967/ImpactAcross/images/WhatsApp_Image_2025-06-17_at_9.10.20_PM_vgv7jb.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "David and Lucile Packard Foundation",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820833/ImpactAcross/partners/download_ofqstg.png",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "BBC Media Action",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1749820837/ImpactAcross/partners/download_zesbir.png",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "ELM Hermannnsburg Partner in Mission",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750427163/ImpactAcross/images/noif6buxk0qxpuwsnfqu.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "The Development Fund",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428242/ImpactAcross/images/ez0jeax5llhdu60u85rd.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "Siiqqee Women's Development Association",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428413/ImpactAcross/images/srdjlfovejdf8qdrw397.jpg",
-        link: "https://impactacross.com"
-      },
-      {
-        name: "Ethiopian Coffee Forest Forum",
-        logo_url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750428321/ImpactAcross/images/f8jm0iu7mts4da4ygbsy.jpg",
-        link: "https://impactacross.com"
-      },
-    ],
-  };
   const [partners, setPartners] = useState(defaultPartner);
+  const [description, setDescription] = useState(" 'At ImpactAcross, we believe sustainable impact comes from strong, collaborative partnerships that unite diverse expertise and perspectives. By working with global and local organizations, we co-create data-driven solutions that empower communities and drive lasting, inclusive development.',")
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef(null);
-
-  // State to control arrow visibility
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
-  // Update arrow visibility based on scroll position
+  // Fetch partners from backend
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const {data} = await getAllData('partners');
+        if (data) {
+          setPartners(data);
+          setDescription(data?.[0]?.section?.description);
+        }
+      } catch (err) {
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
   const updateArrows = () => {
     const el = scrollRef.current;
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 0);
     setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
-    // subtract 1 to handle fractional pixel issues
   };
 
-  // Add scroll listener to update arrow visibility on user scroll
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -110,47 +122,31 @@ export default function Partners() {
       el.removeEventListener('scroll', updateArrows);
       window.removeEventListener('resize', updateArrows);
     };
-  }, [partners.partners]);
+  }, [partners]);
 
   // Auto-rotate partners for small screens
   useEffect(() => {
-    if (partners.partners?.length > 1) {
+    if (partners?.length > 1) {
       const interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % partners.partners.length);
+        setActiveIndex((prev) => (prev + 1) % partners.length);
       }, 5000);
       return () => clearInterval(interval);
     }
-  }, [partners.partners]);
-
-  // Fetch partners from backend
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data: response } = await getAllData('sections/values/partner');
-        const [partnerData] = response;
-        if (partnerData) setPartners(partnerData);
-      } catch (err) {
-        // console.error('Failed to load data:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  }, [partners]);
 
   return (
     <section className="bg-gray-100 text-gray-600 py-12 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-semibold text-center">{partners.title}</h2>
+        <h2 className="text-4xl font-semibold text-center">Partners</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-lg text-center max-w-4xl mx-auto my-6 italic hidden sm:block">
-          <i>{partners.description}</i>
+          <i>{description}</i>
         </p>
 
-        {loading && !partners?.partners?.length && <Loader className="h-12 text-green" />}
+        {loading && !partners?.length && <Loader className="h-12 text-green" />}
 
-        {partners?.partners?.length === 0 && !loading && (
-          <div className="py-20 text-center flex items-center justify-center text-white text-2xl text-gray-800">
+        {partners?.length === 0 && !loading && (
+          <div className="py-20 text-center flex items-center justify-center text-2xl text-gray-800">
             No Data Found!
           </div>
         )}
@@ -167,27 +163,27 @@ export default function Partners() {
               className="absolute w-full h-full bg-white shadow-sm rounded-3xl p-6 text-center flex flex-col justify-center items-center"
             >
               <a
-                href={partners.partners[activeIndex]?.link || '#'}
+                href={partners[activeIndex]?.link || '#'}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex flex-col items-center no-underline hover:underline"
               >
-                {partners.partners[activeIndex]?.logo_url && (
+                {partners[activeIndex]?.logo_url && (
                   <div className="relative w-32 h-32 mb-4">
                     <Image
-                      src={partners.partners[activeIndex].logo_url}
-                      alt={partners.partners[activeIndex].name || 'Partner logo'}
+                      src={partners[activeIndex].logo_url}
+                      alt={partners[activeIndex].name || 'Partner logo'}
                       fill
                       className="object-contain"
                     />
                   </div>
                 )}
                 <h2 className="text-xl font-bold mb-2 text-gray-800 line-clamp-1">
-                  {partners.partners[activeIndex]?.name}
+                  {partners[activeIndex]?.name}
                 </h2>
               </a>
               <p className="text-gray-600 line-clamp-3">
-                {partners.partners[activeIndex]?.description}
+                {partners[activeIndex]?.description}
               </p>
             </motion.div>
           </AnimatePresence>
@@ -211,7 +207,7 @@ export default function Partners() {
             ref={scrollRef}
             className="overflow-x-auto flex py-8 gap-6 scrollbar-hide scroll-smooth px-10"
           >
-            {partners.partners?.map((partner, index) => (
+            {partners?.map((partner, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-64 bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center"
@@ -259,3 +255,4 @@ export default function Partners() {
     </section>
   );
 }
+

@@ -249,13 +249,13 @@ export default function OurTeam() {
             </button>
           )}
 
-          {pageSize > 5 && (
+          {/* {pageSize > 5 && (
             <button 
               onClick={() => handleSeeMore(pageSize - 5)} 
               className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
                 See Less to go Back?
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </section>

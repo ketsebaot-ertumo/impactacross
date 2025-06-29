@@ -43,7 +43,7 @@ export default function ResourceGrid() {
 
   if (loading)
     return (
-        <div className="h-[70vh] flex justify-center">
+        <div className="h-[60vh] flex justify-center items-center">
           <p>Resource data Loading...</p>
           <Loader />
         </div>
@@ -89,8 +89,8 @@ export default function ResourceGrid() {
         </div>
 
         <div>
-          <section className="max-w-6xl mx-auto px-6 py-12">
-              <h2 className="text-4xl font-bold text-center text-gray-800 py-16">Our Resources</h2>
+          <section className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-6 py-4 xl:py-12 pb-12">
+              <h2 className="text-4xl font-bold text-center text-gray-800 py-12">Our Resources</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {resources.map((item) => (
                   <div key={item.id} className="h-full">

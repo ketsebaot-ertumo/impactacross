@@ -72,7 +72,7 @@ export default function OurSectorialFocus() {
 
   return (
     <section id="services" className="scroll-mt-24 bg-gray-100 py-16 text-gray-800">
-      <div className="max-w-6xl mx-auto px-4 md:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-16 xl:px-4">
         <h2 className="text-4xl font-bold text-center line-clamp-4">Our Services</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-center max-w-4xl mx-auto text-lg text-lg italic">

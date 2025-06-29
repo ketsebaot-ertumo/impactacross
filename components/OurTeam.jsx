@@ -116,7 +116,7 @@ export default function OurTeam() {
 
   return (
     <section id="teams" className="scroll-mt-24 py-16 bg-gradient-to-br from-gray-50 to-gray-100 text-gray-600">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-10 lg:px-16 xl:px-4 pr-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +193,7 @@ export default function OurTeam() {
         )}
 
         {/* Grid of other team members */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {others.map((member, idx) => (
                 <motion.div
                   key={idx}
@@ -201,7 +201,7 @@ export default function OurTeam() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1, duration: 0.4 }}
                   viewport={{ once: true }}
-                  className="w-76 lg:w-64 mx-auto rounded-2xl p-6 text-center transition-shadow duration-300"
+                  className="w-76 xl:w-64 mx-auto rounded-2xl p-6 text-center transition-shadow duration-300"
                 >
                   <Link 
                     key={idx}
@@ -212,7 +212,7 @@ export default function OurTeam() {
                       alt={member.name || "Team Profile"}
                       width={100}
                       height={100}
-                      className="w-60 h-60 rounded-full mx-auto object-cover"
+                      className="w-60 h-60 rounded-full mx-auto"
                     />
                     <h4 className="text-lg font-medium text-gray-700">{member.name}</h4>
                     <p className="text-sm text-gray-500">{member.position}</p>

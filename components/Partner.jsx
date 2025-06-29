@@ -136,7 +136,7 @@ export default function Partners() {
 
   return (
     <section className="bg-gray-100 text-gray-600 py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto sm:px-4 lg:px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 xl:px-4">
         <h2 className="text-4xl font-semibold text-center">Partners</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-lg text-center max-w-4xl mx-auto my-6 italic hidden sm:block">
@@ -206,12 +206,12 @@ export default function Partners() {
 
           <div
             ref={scrollRef}
-            className="overflow-x-auto flex py-8 gap-6 scrollbar-hide scroll-smooth px-10"
+            className="overflow-x-auto flex py-8 gap-6 scrollbar-hide scroll-smooth"
           >
             {partners?.map((partner, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 w-64 bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center mr-6"
+                className="flex-shrink-0 w-64 bg-white rounded-2xl shadow-sm p-6 flex flex-col items-center"
               >
                 <a
                   href={partner.link || '#'}
@@ -246,7 +246,7 @@ export default function Partners() {
               onClick={() => {
                 scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
               }}
-              className="mr-10 absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-800 hover:bg-green-700 text-white p-2 rounded-full shadow-md"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-green-800 hover:bg-green-700 text-white p-2 rounded-full shadow-md"
               aria-label="Scroll Right"
             >
               →

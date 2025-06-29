@@ -31,8 +31,8 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 sm:px-12 lg:px-6 py-12 pt-6 lg:py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start sm:px-4 lg:px-8">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-4 sm:px-10 lg:px-16 xl:px-4 py-12 pt-6 lg:py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         {/* Left: Text */}
         <div className="space-y-8">
           <motion.h2
@@ -87,9 +87,9 @@ export default function WhoWeAre() {
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="w-full h-full relative rounded-3xl overflow-hidden shadow-xl"
+          className="w-full h-full relative rounded-3xl overflow-hidden"
         >
-          <div className="backdrop-blur-xl rounded-3xl overflow-hidden border border-white/20 shadow-2xl">
+          <div className="backdrop-blur-xl rounded-3xl overflow-hidden">
             <img
               src={
                 data?.image_url || "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750549533/ImpactAcross/images/WhatsApp_Image_2025-06-21_at_2.57.18_PM_kmt8nd.jpg"}
@@ -113,7 +113,7 @@ export default function WhoWeAre() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2 }}
-                className="relative group pt-8 sm:px-4 lg:px-8"
+                className="relative group pt-8"
               >
                 <div
                   className="text-gray-700 text-[17px] leading-relaxed transition-all duration-300"

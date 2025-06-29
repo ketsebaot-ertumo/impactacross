@@ -59,7 +59,7 @@ export default function ProjectsAndPartners() {
 
   return (
     <section id='projects' className="scroll-mt-24 bg-green-950 text-white">
-      <div className="max-w-6xl mx-auto py-16 px-6 sm:px-12 lg:px-6">
+      <div className="max-w-6xl mx-auto py-16 px-6 sm:px-10 lg:px-16 xl:px-4">
         <h2 className="text-4xl font-semibold text-center mb-4 sm:mb-8">{title || "Projects Overview"}</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 mb-8 rounded" />
         <div className="mb-6 hidden md:flex pt-2 max-w-4xl mx-auto text-center py-4 text-lg">

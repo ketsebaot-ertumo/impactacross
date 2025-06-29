@@ -140,25 +140,25 @@ export default function Gallery() {
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 pt-12 pb-8">
-        <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+        <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 xl:px-4">
+            <div className="text-center mb-6 sm:mb-16">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">
                     {description || 'A beautifully organized archive of captured moments by month.'}
                 </p>
             </div>
 
-            {/* <div className='flex flex-wrap px-4 sm:px-12 lg:px-16 xl:px-4 sm:gap-8 pt-6'> */}
-            <div className='grid md:grid-cols-3 sm:gap-8 pt-6'>
+            {/* <div className='flex flex-wrap sm:gap-8 pt-6'> */}
+            <div className='grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-8 pt-6'>
                 {Object.entries(grouped || {}).reverse().map(([month, items], index) => (
-                <div key={month} className="mb-12">
+                <div key={month} className="mb-2 sm:mb-12">
                     <h3 className="text-2xl font-semibold text-gray-700 mb-4">{month}</h3>
 
-                    <div className="relative rounded-xl flex gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
+                    <div className="relative rounded-xl flex gap-x-[-60px] sm:gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
                     {items.reverse().map((img, i) => (
                         <motion.div
                           key={i}
-                          className="relative w-[250px] sm:w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
+                          className="relative w-[240px] sm:w-[260px] h-[180px] rounded-xl overflow-hidden shadow-md cursor-pointer transition-transform hover:scale-105 hover:z-10"
                           initial={{ opacity: 0, x: 30 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: i * 0.05 }}

@@ -73,7 +73,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-green-950 text-gray-400 py-10 text-sm">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-16 xl:px-0">
         <div className="hidden lg:flex lg:justify-between">
 
           {/* Company Information */}

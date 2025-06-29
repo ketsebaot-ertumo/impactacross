@@ -17,12 +17,13 @@ const ResourceCard = ({ id, name, imageURL, mediaURL, image_url, title, content,
           src={imageURL || mediaURL || image_url}
           alt={title}
           fill
+          sizes="(max-width: 640px) 100vw, 260px"
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
       {/* Text Content */}
-      <div className="flex flex-col justify-between w-full sm:w-3/5 lg:w-2/3 p-6">
+      <div className="flex flex-col justify-between w-full sm:w-3/5 lg:w-2/5 xl:w-2/3 p-6">
         <h3 className="text-2xl font-bold text-green-600 transition-colors mb-4 line-clamp-1">
           {Name}
         </h3>
@@ -30,11 +31,11 @@ const ResourceCard = ({ id, name, imageURL, mediaURL, image_url, title, content,
           {title}
         </h3>
 
-        <p className="text-base text-gray-600 line-clamp-2">
+        <p className="text-base text-gray-600 line-clamp-1 xl:line-clamp-2">
           {content}
         </p>
 
-        <p className="text-base text-gray-600 line-clamp-2">
+        <p className="text-base text-gray-600 line-clamp-1 xl:line-clamp-2">
           {source}
         </p>
       </div>

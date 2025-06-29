@@ -139,7 +139,7 @@ export default function Gallery() {
   
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-white to-gray-100 px-4 pt-12 pb-8">
+    <section className="bg-gradient-to-br from-white to-gray-100 pt-12 pb-8">
         <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
@@ -148,12 +148,13 @@ export default function Gallery() {
                 </p>
             </div>
 
-            <div className='flex flex-wrap sm:gap-8 pt-6'>
+            {/* <div className='flex flex-wrap px-4 sm:px-12 lg:px-16 xl:px-4 sm:gap-8 pt-6'> */}
+            <div className='grid md:grid-cols-3 sm:gap-8 pt-6'>
                 {Object.entries(grouped || {}).reverse().map(([month, items], index) => (
                 <div key={month} className="mb-12">
-                    <h3 className="text-2xl font-semibold text-gray-700 mb-6">{month}</h3>
+                    <h3 className="text-2xl font-semibold text-gray-700 mb-4">{month}</h3>
 
-                    <div className="relative rounded-xl flex  gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
+                    <div className="relative rounded-xl flex gap-x-[-80px] hover:gap-x-4 transition-all duration-500 overflow-x-auto scrollbar-hide pb-4">
                     {items.reverse().map((img, i) => (
                         <motion.div
                           key={i}
@@ -188,6 +189,7 @@ export default function Gallery() {
                               src={img.media_url}
                               alt={img.title || `Image ${i}`}
                               fill
+                              sizes="(max-width: 640px) 100vw, 260px"
                               className="object-cover rounded-xl"
                             />
                           )}

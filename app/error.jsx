@@ -9,7 +9,7 @@ export default function GlobalError({ error, reset }) {
   }, [error]);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-white text-center p-8">
+    <main className="min-h-[60vh] flex flex-col items-center justify-center bg-white text-center p-8">
       <h1 className="text-4xl font-bold text-red-600 mb-4">Something went wrong</h1>
       <p className="text-gray-600 text-lg">{error?.message || 'Unexpected error occurred.'}</p>
       

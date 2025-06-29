@@ -148,7 +148,7 @@ export default function Header() {
   
 
   return (
-    <div className="bg-white text-gray-600 sticky top-0 z-50">
+    <div className="bg-white text-gray-600 sticky top-0 z-50 w-full">
       <div className="max-w-7xl mx-auto lg:px-5 pr-4">
         <div position="static">
           <Toolbar className="flex justify-between items-center py-2">

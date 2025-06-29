@@ -31,8 +31,8 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 py-12 pt-6 lg:py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <section id="about" className="scroll-mt-24 max-w-6xl mx-auto px-6 sm:px-12 lg:px-6 py-12 pt-6 lg:py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start sm:px-4 lg:px-8">
         {/* Left: Text */}
         <div className="space-y-8">
           <motion.h2
@@ -113,7 +113,7 @@ export default function WhoWeAre() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2 }}
-                className="relative group pt-8"
+                className="relative group pt-8 sm:px-4 lg:px-8"
               >
                 <div
                   className="text-gray-700 text-[17px] leading-relaxed transition-all duration-300"

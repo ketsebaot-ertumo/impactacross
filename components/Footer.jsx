@@ -65,7 +65,6 @@ export default function Footer() {
             setData(data);
           }
         } catch (err) {
-          // console.error("Failed to load data:", err);
         }
       };
   
@@ -73,7 +72,7 @@ export default function Footer() {
     }, []);
 
   return (
-    <footer className="bg-green-950 text-gray-400 py-10 px-8 text-sm">
+    <footer className="bg-green-950 text-gray-400 py-10 text-sm">
       <div className="max-w-6xl mx-auto">
         <div className="hidden lg:flex lg:justify-between">
 

@@ -91,7 +91,7 @@ export default function OurSectorialFocus() {
                 <img
                   src={item.image_url || image_url}
                   alt={item.title}
-                  className="w-full h-40 object-cover rounded-xl mb-4"
+                  className="w-full h-40 sm:h-50 object-cover rounded-xl mb-4"
                 />
                 <h3 className="text-2xl font-semibold">{item.title}</h3>
                 <p className="text-lg mt-2 line-clamp-4">{item.content}</p>
@@ -134,12 +134,12 @@ export default function OurSectorialFocus() {
             >
               <div className="flex items-center gap-4 hover:opacity-60">
                 <img
-                  src={item.image_url || item.image || fallbackImage}
+                  src={item.image_url || item.image}
                   alt={item.title}
-                  className="w-20 h-20 rounded-lg object-cover transition rounded-xl hover:scale-108 duration-300"
+                  className="w-20 h-20 rounded-lg transition rounded-xl hover:scale-108 duration-300"
                 />
                 <div className="">
-                  <h3 className="text-xl font-semibold object-contain transition rounded-xl hover:scale-108 duration-300 line-clamp-1">{item.title}</h3>
+                  <h3 className="line-clamp-1 text-xl font-semibold object-contain transition rounded-xl hover:scale-108 duration-300 line-clamp-1">{item.title}</h3>
                   {/* <p className="text-sm mt-2 line-clamp-2">{item.content}</p> */}
                 </div>
               </div>
@@ -176,13 +176,6 @@ export default function OurSectorialFocus() {
             </button>
           )}
 
-          {pageSize > 5 && (
-            <button 
-              onClick={() => handleSeeMore(pageSize - 5)} 
-              className='cursor-pointer text-gray-800 flex justify-center text-md shadow-lg border border-green-800 p-4 mt-8 rounded-lg max-w-2xl mx-auto'>
-                See Less to go Back?
-            </button>
-          )}
         </div>
       </div>
     </section>

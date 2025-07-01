@@ -162,7 +162,7 @@ export default function Gallery() {
                           initial={{ opacity: 0, x: 30 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ duration: 0.3, delay: i * 0.05 }}
-                          // onClick={() => setSelected(img)}
+                          onClick={() => setSelected(img)}
                           style={{
                               marginLeft: i === 0 ? 0 : -200,
                               marginTop: (i % 5) * 12,
@@ -172,7 +172,7 @@ export default function Gallery() {
                              img.media_url.includes('youtube.com') || img.media_url.includes('youtu.be') ? (
                               <iframe
                                 src={getYouTubeEmbedUrl(img.media_url)}
-                                className="w-full h-full rounded-xl"
+                                className="w-full h-full rounded-xl pointer-events-none"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullScreen
@@ -181,7 +181,7 @@ export default function Gallery() {
                               <video
                                 src={img.media_url}
                                 controls
-                                className="w-full h-full object-cover rounded-xl"
+                                className="w-full h-full object-cover rounded-xl pointer-events-none"
                               />
                             )
                           ) : (
@@ -247,7 +247,7 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            // onClick={() => setSelected(null)}
+            onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ scale: 0.95 }}
@@ -255,15 +255,45 @@ export default function Gallery() {
               exit={{ scale: 0.9 }}
               className="relative max-w-4xl w-full"
             >
-              <Image
+              {/* <Image
                 src={selected?.image_url}
                 alt={selected?.title || 'Selected'}
                 width={1200}
                 height={800}
                 className="rounded-xl object-contain w-full shadow-xl"
-              />
+              /> */}
+              <div className="relative w-full h-full max-h-[90vh] max-w-4xl mx-auto">
+                {selected?.media_type === 'image' ? (
+                  <Image
+                    src={selected.media_url}
+                    alt={selected.title || 'Selected'}
+                    width={1200}
+                    height={800}
+                    className="rounded-xl object-contain w-full h-auto shadow-xl"
+                  />
+                ) : selected?.media_type === 'video' ? (
+                  selected.media_url.includes('youtube.com') || selected.media_url.includes('youtu.be') ? (
+                    <iframe
+                      src={getYouTubeEmbedUrl(selected.media_url)}
+                      className="w-full rounded-xl"
+                      style={{ aspectRatio: '16/9' }}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <video
+                      src={selected.media_url}
+                      controls
+                      autoPlay
+                      className="rounded-xl w-full h-auto max-h-[90vh] shadow-xl"
+                    />
+                  )
+                ) : null}
+              </div>
+
               <button
-                // onClick={() => setSelected(null)}
+                onClick={() => setSelected(null)}
                 className="absolute top-4 right-4 bg-white/80 hover:bg-white/90 text-black px-3 py-1 rounded-full text-sm font-semibold shadow"
               >
                 Close ✕

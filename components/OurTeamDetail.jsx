@@ -15,7 +15,7 @@ const teams= [
   {
     id: "1",
     name: "Kassahun K. Suleman(PhD)",
-    position: "Founder & CTO",
+    position: "Founder & CEO",
     email: "Kassahun.kelifa@impactacross.com",
     linkedin: "https://linkedin.com/in/",
     facebook: "https://facebook.com",
@@ -79,6 +79,7 @@ const teams= [
 export default function OurTeamDetail({ id }) {
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,7 +88,6 @@ export default function OurTeamDetail({ id }) {
         const newData = teams.find((team) => team?.id === id);
         setMember(response || newData);
       } catch (error) {
-        // console.error('Error fetching data:', error);
       } finally {
         setLoading(false);
       }
@@ -97,7 +97,7 @@ export default function OurTeamDetail({ id }) {
 
   if (loading) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center text-gray-600">
+      <div className="h-[60vh] flex flex-col items-center justify-center text-gray-600">
         <LoaderCircle className="animate-spin h-8 w-8 mb-3 text-green-600" />
         <p className="text-base font-medium">Loading team details...</p>
       </div>
@@ -106,18 +106,22 @@ export default function OurTeamDetail({ id }) {
 
   if (!member) {
     return (
-      <div className="h-screen flex items-center justify-center text-gray-500 font-semibold text-2xl">
+      <div className="h-[60vh] flex items-center justify-center text-gray-500 font-semibold text-2xl">
         <p>Team not found!</p>
       </div>
     );
   }
 
+  const handleExpand = () => {
+    setExpanded(!expanded);
+  }
+
   return (
-    <section className='min-h-screen'>
-      <div className="max-w-6xl mx-auto w-full pt-10 px-6">
+    <section className='px-4 sm:px-10 lg:px-16 xl:px-4'>
+      <div className="max-w-6xl mx-auto w-full pt-10 px-4">
         <Link
           href="/#teams"
-          className="text-green-600 hover:text-green-800 transition text-md font-medium mb-6 inline-block"
+          className="text-green-600 hover:text-green-800 transition text-md font-medium sm:mb-6 inline-block"
         >
           ← Back to Teams
         </Link>
@@ -143,7 +147,7 @@ export default function OurTeamDetail({ id }) {
 
           {/* Text */}
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">{member.name}</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{member.name}</h1>
             <p className="text-lg font-medium text-green-700 mb-4">{member.position}</p>
 
             <div className="flex gap-4 items-center mb-6">
@@ -178,7 +182,7 @@ export default function OurTeamDetail({ id }) {
               )}
             </div>
 
-            <p className="text-base leading-relaxed whitespace-pre-line text-justify italic md:h-[20vh] lg:h-full overflow-y-auto">
+            <p onClick={() => handleExpand()} className={`${!expanded ? 'line-clamp-12 lg:line-clamp-14' : ''} text-sm leading-relaxed whitespace-pre-line text-justify italic`}>
               {member?.description}
             </p>
           </div>

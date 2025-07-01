@@ -15,7 +15,7 @@ const defaultData = [
   {
     id: '1',
     name: "Kassahun K. Suleman(PhD)",
-    position: "Founder & CTO",
+    position: "Founder & CEO",
     email: "Kassahun.kelifa@impactacross.com",
     linkedin: "https://linkedin.com/in/",
     facebook: "https://facebook.com",
@@ -111,8 +111,8 @@ export default function OurTeam() {
         setPageSize(limit);
    };
 
-  const founder = data.find((member) => member?.position?.toLowerCase()?.includes('founder')) || defaultData.find((member) => member?.position?.toLowerCase()?.includes('founder'));
-  const others = data.filter((member) => !member?.position?.toLowerCase()?.includes('founder')) || defaultData.filter((member) => !member?.position?.toLowerCase()?.includes('founder'));
+  const founder = data?.find((member) => member?.position?.toLowerCase()?.includes('founder')) || defaultData.find((member) => member?.position?.toLowerCase()?.includes('founder'));
+  const others = data?.filter((member) => !member?.position?.toLowerCase()?.includes('founder')) || defaultData.filter((member) => !member?.position?.toLowerCase()?.includes('founder'));
 
   return (
     <section id="teams" className="scroll-mt-24 py-16 bg-gradient-to-br from-gray-50 to-gray-100 text-gray-600">

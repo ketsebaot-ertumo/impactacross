@@ -212,7 +212,7 @@ export default function OurTeam() {
                       alt={member.name || "Team Profile"}
                       width={100}
                       height={100}
-                      className="w-60 h-60 rounded-full mx-auto"
+                      className="w-60 h-50 rounded-full mx-auto"
                     />
                     <h4 className="text-lg font-medium text-gray-700">{member.name}</h4>
                     <p className="text-sm text-gray-500">{member.position}</p>

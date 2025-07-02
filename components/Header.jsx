@@ -157,12 +157,12 @@ export default function Header() {
                 <img
                   src={data?.logo_url || "/logo2.png"}
                   alt="Company Logo"
-                  className="h-12 w-12 sm:h-22 sm:w-22"
+                  className="h-8 w-8 sm:h-12 sm:w-12 object-contain"
                 />
               </Link>
               <div>
-                <h1 className="text-3xl font-semibold">
-                  {data?.name || "ImpactAcross"}
+                <h1 className="text-2xl font-semibold">
+                  {data?.name || "IMPCTACROSS"}
                 </h1>
                 <p className="text-[10px] font-semibold hidden md:block">
                   {data?.title ||

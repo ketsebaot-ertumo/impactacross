@@ -215,7 +215,7 @@ export default function OurTeam() {
                       className="w-60 h-60 sm:h-50 rounded-full mx-auto"
                     />
                     <h4 className="text-lg font-medium text-gray-700">{member.name}</h4>
-                    <p className="text-sm text-gray-500">{member.position}</p>
+                    <p className="text-sm text-emerald-600">{member.position}</p>
                   </Link>
 
                   <div className="flex justify-center gap-3 mt-3" onClick={(e) => e.stopPropagation()}>

@@ -162,7 +162,7 @@ export default function Header() {
               </Link>
               <div>
                 <h1 className="text-2xl font-semibold">
-                  {data?.name || "IMPCTACROSS"}
+                  {data?.name || "ImpactAcross"}
                 </h1>
                 <p className="text-[10px] font-semibold hidden md:block">
                   {data?.title ||

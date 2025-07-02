@@ -83,7 +83,7 @@ export default function Footer() {
               alt="Company Logo" 
               className="h-8 w-8 sm:h-12 sm:w-12 object-contain"
             />
-            <p className="text-2xl font-semibold text-white pt-2">ImpactAcross</p>
+            <p className="text-2xl font-semibold text-white pt-3">ImpactAcross</p>
             <p className="font-semibold">Development Research and Consultancy PLC</p>
           </div>
 

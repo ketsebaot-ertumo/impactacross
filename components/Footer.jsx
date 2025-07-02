@@ -77,14 +77,14 @@ export default function Footer() {
         <div className="hidden lg:flex lg:justify-between">
 
           {/* Company Information */}
-          <div className="space-y-2">
+          <div className="">
             <img 
               src={data?.logo_url || "/logo2.png"}
               alt="Company Logo" 
               className="h-8 w-8 sm:h-12 sm:w-12 object-contain"
             />
-            <p className="text-2xl font-semibold text-white">ImpactAcross</p>
-            <p className="font-semibold w-60 lg:w-60 pt-2">Development Research and Consultancy PLC</p>
+            <p className="text-2xl font-semibold text-white pt-2">ImpactAcross</p>
+            <p className="font-semibold">Development Research and Consultancy PLC</p>
           </div>
 
           {/* Navigation Links */}

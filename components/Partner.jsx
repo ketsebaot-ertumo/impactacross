@@ -136,7 +136,7 @@ export default function Partners() {
 
   return (
     <section className="bg-gray-100 text-gray-600 py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 xl:px-4">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-0">
         <h2 className="text-4xl font-semibold text-center">Partners</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-primary to-green-800 mx-auto my-4 rounded" />
         <p className="text-lg text-center max-w-4xl mx-auto my-6 italic hidden sm:block">
@@ -160,7 +160,7 @@ export default function Partners() {
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -100, opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="mx-6 absolute w-full h-full bg-white shadow-sm rounded-3xl p-6 text-center flex flex-col justify-center items-center"
+              className="absolute w-full h-full bg-white shadow-sm rounded-3xl p-6 text-center flex flex-col justify-center items-center"
             >
               <a
                 href={partners[activeIndex]?.link || '#'}

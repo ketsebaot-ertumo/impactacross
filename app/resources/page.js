@@ -43,7 +43,7 @@ export default function ResourceGrid() {
 
   if (loading)
     return (
-        <div className="h-[60vh] flex justify-center items-center">
+        <div className="h-[60vh] flex justify-center items-center text-black">
           <p>Resource data Loading...</p>
           <Loader />
         </div>
@@ -51,7 +51,7 @@ export default function ResourceGrid() {
 
   if(error){
       return (
-          <div className="min-h-screen flex items-center justify-center text-red-600 text-2xl">
+          <div className="min-h-[60vh] flex items-center justify-center text-red-600 text-2xl">
               <div>
                   <h1 className="text-4xl font-bold mb-4">Error</h1>
                   <p>{error || "Error occur on fetching resource data."}</p>
@@ -79,7 +79,7 @@ export default function ResourceGrid() {
             <div className="absolute inset-0 bg-black opacity-50 w-full"></div>
     
             <div className="absolute inset-0 flex items-center max-w-6xl mx-auto">
-              <div className="mx-6 md:px-9 lg:px-12">
+              <div className="px-6 sm:px-10 lg:px-16 xl:px-0">
                 <div className="text-white text-4xl font-bold border-b pb-4">
                   Resources
                 </div>
@@ -89,7 +89,7 @@ export default function ResourceGrid() {
         </div>
 
         <div>
-          <section className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-6 py-4 xl:py-12 pb-12">
+          <section className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-0 py-4 xl:py-12 pb-12">
               <h2 className="text-4xl font-bold text-center text-gray-800 py-12">Our Resources</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 {resources.map((item) => (

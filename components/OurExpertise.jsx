@@ -23,8 +23,8 @@ export default function OurExpertise() {
   };
 
   return (
-    <section className="bg-green-950 text-white pt-16 pb-12 px-6 sm:px-12 lg:px-6">
-      <div className="max-w-6xl mx-auto sm:px-4 lg:px-8">
+    <section className="bg-green-950 text-white pt-16 pb-12">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-0">
         <div className="text-center mb-12">
           <motion.h2
             className="text-4xl font-bold pb-2"

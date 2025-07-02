@@ -140,7 +140,7 @@ export default function Gallery() {
 
   return (
     <section className="bg-gradient-to-br from-white to-gray-100 pt-12 pb-8">
-        <div className="max-w-6xl mx-auto px-8 sm:px-12 lg:px-16 xl:px-4">
+        <div className="max-w-6xl mx-auto px-6 sm:px-12 lg:px-16 xl:px-0">
             <div className="text-center mb-6 sm:mb-16">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">Our Gallery</h2>
                 <p className="text-lg text-gray-600 max-w-2xl mx-auto italic">

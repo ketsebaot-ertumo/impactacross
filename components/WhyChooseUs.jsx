@@ -95,8 +95,8 @@ export default function WhyChooseUs() {
     }, [data?.description, expanded]);  
     
   return (
-    <section className="bg-green-950 text-gray-300 py-16 px-8 md:px-12">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-green-950 text-gray-300 py-16">
+      <div className="max-w-6xl mx-auto px-6 sm:px-10 lg:px-16 xl:px-0">
         <motion.h2
           className="text-4xl font-semibold pb-2 text-center"
           initial={{ opacity: 0, y: -20 }}

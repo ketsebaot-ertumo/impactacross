@@ -81,7 +81,7 @@ export default function Footer() {
             <img 
               src={data?.logo_url || "/logo2.png"}
               alt="Company Logo" 
-              className="h-12 w-12 sm:h-22 sm:w-22"
+              className="h-8 w-8 sm:h-12 sm:w-12 object-contain"
             />
             <p className="text-2xl font-semibold text-white">ImpactAcross</p>
             <p className="font-semibold w-60 lg:w-60 pt-2">Development Research and Consultancy PLC</p>

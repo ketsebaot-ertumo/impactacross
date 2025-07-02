@@ -147,7 +147,7 @@ export default function OurTeam() {
 
         {/* Founder at center */}
         {founder && (
-          <div className="flex justify-center mb-6 shadow-lg rounded-4xl">
+          <div className="flex justify-center mb-6 shadow-lg sm:shadow-none rounded-4xl">
               {/* <Link 
                 href={`/team-detail/${founder?.id}`}
               > */}
@@ -155,7 +155,7 @@ export default function OurTeam() {
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.5 }}
-                  className=" rounded-2xl p-6 w-76 sm:w-82 text-center"
+                  className=" rounded-4xl p-6 w-76 sm:w-82 text-center"
                 >
                   <Link 
                     href={`/team-detail/${founder?.id}`}

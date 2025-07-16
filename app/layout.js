@@ -33,8 +33,8 @@ export const metadata = {
   keywords: ["impactacross", "consultancy", "development", "sustainability", "reasearch"],
   authors: [{ name: "Ketsebaot Ertumo", url: "https://ketsebaot.vercel.app" }],
   icons: {
-    icon: '/images/logo1.jpeg',
-    apple: '/images/logo1.jpeg',
+    icon: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1751620900/ImpactAcross/images/qfnpvklxk1dhiprl71yq.jpg',
+    apple: 'https://res.cloudinary.com/dq6mvqivd/image/upload/v1751620900/ImpactAcross/images/qfnpvklxk1dhiprl71yq.jpg',
   },
   openGraph: {
     title: "ImpactAcross Consulting",
@@ -43,11 +43,11 @@ export const metadata = {
     siteName: "ImpactAcross Consulting",
     images: [
       {
-        url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png",
+        url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1751620900/ImpactAcross/images/qfnpvklxk1dhiprl71yq.jpg",
         width: 1200,
         height: 630,
         alt: "ImpactAcross Consulting",
-        type: "image/png"
+        type: "image/jpg"
       },
     ],
     locale: "en_US",
@@ -59,11 +59,11 @@ export const metadata = {
     description: "ImpactAcross is a dynamic development research and consultancy firm committed to transforming lives and systems across Africa. We specialize in delivering high-quality research, policy analysis, program design, monitoring & evaluation (M&E), capacity building, and strategic advisory services to NGOs, governments, development agencies, and the private sector.",
     images: [
       {
-        url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1750098307/ImpactAcross/owner/WhatsApp_Image_2025-06-16_at_6.20.52_PM-removebg-preview_rrgeex.png",
+        url: "https://res.cloudinary.com/dq6mvqivd/image/upload/v1751620900/ImpactAcross/images/qfnpvklxk1dhiprl71yq.jpg",
         width: 1200,
         height: 630,
         alt: "ImpactAcross Consulting",
-        type: "image/png"
+        type: "image/jpg"
       },
     ],
   },

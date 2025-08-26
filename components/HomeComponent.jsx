@@ -37,7 +37,7 @@ export default function Home() {
             alt="Consultancy Services"
             className="w-full object-cover max-h-[60vh]"
           />
-          <div className="absolute inset-0 bg-black opacity-40 w-full"></div>
+          <div className="absolute inset-0 bg-black opacity-60 w-full"></div>
           <div className="absolute inset-0 flex items-center justify-center px-4">
             <p className="text-white text-2xl md:text-4xl font-bold text-center break-words max-w-[90%] md:max-w-[800px]">
               { data?.description || "Informing Action. Inspiring Change. Impacting Futures."}
